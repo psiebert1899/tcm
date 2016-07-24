@@ -33,6 +33,8 @@ export class SigninComponent implements OnInit{
             data => {
                 localStorage.setItem('token',data.obj);
                 localStorage.setItem('userId',data.userId);
+                localStorage.setItem('firstName',data.firstName);
+                localStorage.setItem('lastName',data.lastName);
                 this._router.navigateByUrl('/');
             },
             error => {
