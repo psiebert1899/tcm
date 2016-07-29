@@ -4,9 +4,10 @@ var jwt = require('jsonwebtoken');
 var passwordHash = require('password-hash');
 
 var User = require('../models/user');
+var ApplicationUser = require('../models/applicationuser');
 
 router.post('/signin',function(req,res,next){
-    User.findOne({email: req.body.email},function(err,user){
+    User.findOne({email: req.body.email}).populate('applicationUser').exec(function(err,user){
         if(err){
             res.status(500).json({
                 title: 'An error occurred',
@@ -20,33 +21,55 @@ router.post('/signin',function(req,res,next){
             })
         }
         var token = jwt.sign({user:user},'replaceThisSecret',{expiresIn: 7200});
+        console.log(user);
         res.status(200).json({
             message: 'Success',
             obj: token,
             userId : user._id,
-            firstName:user.firstName,
-            lastName: user.lastName
+            applicationUser: user.applicationUser,
         })
     })
+
 });
-router.post('/',function(req,res,next){
+router.post('/',function(req,res,next) {
     var user = new User({
-        firstName:req.body.firstName,
-        lastName : req.body.lastName,
-        password : passwordHash.generate(req.body.password),
-        email : req.body.email
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        password: passwordHash.generate(req.body.password),
+        email: req.body.email
     });
-    user.save(function(err,result){
-        if(err){
+    user.save(function (err, result) {
+        if (err) {
             return res.status(500).json({
                 title: 'An Error Occurred',
                 error: err
             })
         }
-        res.status(200).json({
-            message: 'Success',
-            obj: result
+        console.log(result.email);
+        console.log(result.firstName);
+        var applicationUser = new ApplicationUser({
+            firstName: result.firstName,
+            lastName: result.lastName,
+            email: result.email,
+            user: result._id
+
+        })
+        applicationUser.save(function (err, succ) {
+            if (err) {
+                return res.status(500).json({
+                    title: 'An Error Occurred',
+                    error: err
+                })
+
+            }
+            result.applicationUser=applicationUser;
+            result.save();
+            res.status(200).json({
+                message: 'Success',
+                obj: result,
+                appUser: succ
+            })
         })
     })
-});
+})
 module.exports = router;

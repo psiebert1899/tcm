@@ -1,6 +1,8 @@
-import {Component} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {ROUTER_DIRECTIVES, Routes} from "@angular/router";
 import {AuthenticationService} from "./auth/authentication.service";
+import {UserService} from "./user/user.service";
+import {ApplicationUser} from "./user/applicationuser";
 @Component({
     selector: 'my-header',
     template:`
@@ -58,7 +60,7 @@ import {AuthenticationService} from "./auth/authentication.service";
                         </li>
                       </ul>
                       <ul class="nav navbar-nav navbar-right">
-                      <li *ngIf="isLoggedIn()">{{getUserName()}}</li>
+                      <li *ngIf="isLoggedIn()"><a [routerLink]="['/user/profile']">{{loggedUser!=undefined?loggedUser.firstName+" " + loggedUser.lastName : 'Default User'}}</a></li>
                         <li><a [routerLink]="['/auth/signin']" *ngIf="!isLoggedIn()">Sign In</a></li>
                         <li><a [routerLink]="['/auth/signup']" *ngIf="!isLoggedIn()">Sign Up</a></li>
                         <li><a [routerLink]="['auth/logout']" *ngIf="isLoggedIn()">Sign Out</a></li>
@@ -86,16 +88,23 @@ import {AuthenticationService} from "./auth/authentication.service";
     directives: [ROUTER_DIRECTIVES]
 })
 
-export class HeaderComponent{
-    constructor(private _authService:AuthenticationService){}
+export class HeaderComponent implements OnInit{
+    public loggedUser : ApplicationUser;
+    constructor(private _authService:AuthenticationService,private _userService : UserService){}
+
     isLoggedIn(){
         return this._authService.isLoggedIn();
     }
+    ngOnInit() {
+       this._userService.getUser().subscribe(
+           data => {
+               this.loggedUser=data;
+           },error=>{console.log(error)}
+       )
+    }
     getUserName(){
-        if(this.isLoggedIn()){
-            return localStorage.getItem('firstName') +" " + localStorage.getItem('lastName')
-
-        }
+        console.log(this._userService.user);
+        this._userService.user;
     }
 
 }

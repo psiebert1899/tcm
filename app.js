@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 
 var appRoutes = require('./routes/app');
 var userRoutes =require('./routes/authentication');
+var appUserRoutes = require('./routes/users');
 
 var app = express();
 mongoose.connect('localhost:27017/tcm');
@@ -29,7 +30,7 @@ app.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PATCH, DELETE');
     next();
 });
-
+app.use('/appUser',appUserRoutes);
 app.use('/user',userRoutes);
 app.use('/', appRoutes);
 
