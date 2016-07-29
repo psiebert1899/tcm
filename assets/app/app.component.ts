@@ -6,12 +6,15 @@ import {SigninComponent} from "./auth/signin.component";
 import {SignupComponent} from "./auth/signup.component";
 import {LogoutComponent} from "./auth/logout.component";
 import {ErrorComponent} from "./errors/error.component";
+import {UserHomeComponent} from "./user/userhome.component";
 
 @Component({
     selector: 'my-app',
     template: ` 
         <my-header></my-header>
-        <router-outlet></router-outlet>
+        <div class="container-fluid" id="myContainer">
+            <router-outlet></router-outlet>
+        </div>
     `,
     directives:[HeaderComponent,ROUTER_DIRECTIVES,ErrorComponent],
     styles: [`
@@ -25,12 +28,19 @@ import {ErrorComponent} from "./errors/error.component";
         .navbar-default .navbar-nav>li>a {
             color:white;
         }
+        #myContainer{
+            width:80%;
+            margin-left:10%;
+            background-color:white;
+            margin-top:0px;
+        }
     `]
 })
 @Routes([
     {path:"/auth/signin",component:SigninComponent},
     {path:"/auth/signup",component:SignupComponent},
-    {path:'/auth/logout',component:LogoutComponent}
+    {path:'/auth/logout',component:LogoutComponent},
+    {path:'/user/profile',component:UserHomeComponent}
 ])
 export class AppComponent {
     

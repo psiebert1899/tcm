@@ -1,5 +1,6 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color:deepskyblue;
 }
 
 a {
@@ -20,3 +21,7 @@ a.danger {
 .spacing {
   margin-bottom: 20px;
 }
+/*
+#mylist{
+  font-size:1.3em;
+}*/

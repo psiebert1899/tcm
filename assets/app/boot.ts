@@ -8,5 +8,6 @@ import {HTTP_PROVIDERS} from "@angular/http";
 import {provide} from "@angular/core";
 import {ErrorService} from "./errors/error.service";
 import {AuthenticationService} from "./auth/authentication.service";
+import {UserService} from "./user/user.service";
 
-bootstrap(AppComponent,[ROUTER_PROVIDERS,ErrorService,AuthenticationService,provide(LocationStrategy,{useClass:HashLocationStrategy}),HTTP_PROVIDERS]);
+bootstrap(AppComponent,[ROUTER_PROVIDERS,ErrorService,AuthenticationService,UserService,provide(LocationStrategy,{useClass:HashLocationStrategy}),HTTP_PROVIDERS]);
