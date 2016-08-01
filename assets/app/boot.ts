@@ -9,5 +9,6 @@ import {provide} from "@angular/core";
 import {ErrorService} from "./errors/error.service";
 import {AuthenticationService} from "./auth/authentication.service";
 import {UserService} from "./user/user.service";
+import {EmployeeService} from "./employee/employee.service";
 
-bootstrap(AppComponent,[ROUTER_PROVIDERS,ErrorService,AuthenticationService,UserService,provide(LocationStrategy,{useClass:HashLocationStrategy}),HTTP_PROVIDERS]);
+bootstrap(AppComponent,[ROUTER_PROVIDERS,ErrorService,AuthenticationService,UserService,EmployeeService,provide(LocationStrategy,{useClass:HashLocationStrategy}),HTTP_PROVIDERS]);

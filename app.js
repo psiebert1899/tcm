@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
+var employeeRoutes=require('./routes/employee');
 var appRoutes = require('./routes/app');
 var userRoutes =require('./routes/authentication');
 var appUserRoutes = require('./routes/users');
@@ -30,6 +31,7 @@ app.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PATCH, DELETE');
     next();
 });
+app.use('/employee',employeeRoutes);
 app.use('/appUser',appUserRoutes);
 app.use('/user',userRoutes);
 app.use('/', appRoutes);

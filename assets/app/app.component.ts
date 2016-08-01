@@ -7,6 +7,8 @@ import {SignupComponent} from "./auth/signup.component";
 import {LogoutComponent} from "./auth/logout.component";
 import {ErrorComponent} from "./errors/error.component";
 import {UserHomeComponent} from "./user/userhome.component";
+import {NewEmployeeComponent} from "./employee/newemployee.component";
+import {EmployeeListComponent} from "./employee/employeelist";
 
 @Component({
     selector: 'my-app',
@@ -40,7 +42,9 @@ import {UserHomeComponent} from "./user/userhome.component";
     {path:"/auth/signin",component:SigninComponent},
     {path:"/auth/signup",component:SignupComponent},
     {path:'/auth/logout',component:LogoutComponent},
-    {path:'/user/profile',component:UserHomeComponent}
+    {path:'/user/profile',component:UserHomeComponent},
+    {path:'/employee/new',component:NewEmployeeComponent},
+    {path:'/employee/list', component: EmployeeListComponent}
 ])
 export class AppComponent {
     
