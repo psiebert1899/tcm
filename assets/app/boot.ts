@@ -10,5 +10,5 @@ import {ErrorService} from "./errors/error.service";
 import {AuthenticationService} from "./auth/authentication.service";
 import {UserService} from "./user/user.service";
 import {EmployeeService} from "./employee/employee.service";
-
-bootstrap(AppComponent,[ROUTER_PROVIDERS,ErrorService,AuthenticationService,UserService,EmployeeService,provide(LocationStrategy,{useClass:HashLocationStrategy}),HTTP_PROVIDERS]);
+import {ProjectService} from "./project/project.service"
+bootstrap(AppComponent,[ROUTER_PROVIDERS,ErrorService,AuthenticationService,UserService,EmployeeService,ProjectService,provide(LocationStrategy,{useClass:HashLocationStrategy}),HTTP_PROVIDERS]);

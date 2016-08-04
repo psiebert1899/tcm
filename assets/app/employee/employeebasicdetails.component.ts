@@ -11,25 +11,69 @@ import {Employee} from "./employee";
                         <img src="{{employee?.image}}" class="img img-responsive">      
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4 col-md-offset-1">
                     <h1>{{employee?.firstName +" " + employee?.lastName}}</h1>
                     <h4>{{(employee?.division && employee.department)?employee?.division+"-"+employee.department:""}}</h4>
-                    <p>{{employee?.email}}</p>
-                    <p>{{employee?.phone}}</p>
-                    <p>{{employee?.city}}{{employee?.state ? "," + employee?.state : ""}} - {{employee?.country}}</p>
+                    <div><i class="fa fa-envelope" aria-hidden="true"></i><span class="text-node">{{employee?.email}}</span></div>
+                    <div><i class="fa fa-phone-square" aria-hidden="true"></i><span class="text-node">{{employee?.phone}}</span></div>
+                    <div><i class="fa fa-home" aria-hidden="true"></i><span class="text-node">{{employee?.city}}{{employee?.state ? "," + employee?.state : ""}} - {{employee?.country}}</span></div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 col-md-offset-1">
                     <ul class="list-group" id="mylist">
-                        <li class="list-group-item">Title: <span class="badge">{{employee?.title}}</span></li>
+                        <li class="list-group-item" id="top">Title: <span class="badge">{{employee?.title}}</span></li>
                         <li class="list-group-item">Manager:<a href="#" class="badge">{{employee?.manager}}</a></li>
                         <li class="list-group-item">Employees: <span class="badge">{{employee?.employees}}</span></li>
                         <li class="list-group-item">Projects: <span class="badge">{{employee?.projects}}</span></li>
-                        <li class="list-group-item">Avaliability: <span class="badge">0%</span></li>
+                        <li class="list-group-item" id="bottom">Avaliability: <span class="badge">0%</span></li>
                     </ul>
                 </div>
             </div>
             </article>
-        `
+        `,
+    styles:[`
+    	#mylist{
+            font-size: 1.7em;
+            margin-bottom:0;
+    	}
+    	.right-align{
+    	    float:right;
+    	}
+    	.container-fluid{
+    	    padding:0;
+    	}
+    	.col-md-2{
+    	margin:0;
+    	padding:0;
+    	}
+    	.thumbnail{
+    	    margin-bottom:0;
+    	}
+    	.list-group-item{
+    	    border-right:0;
+    	}
+    	#top{
+    	    border-top:0;
+    	}
+    	#bottom{
+    	border-bottom:0;
+    	}
+    	h1{
+    	text-align:center;
+    	}
+    	h4{
+    	text-align:center;
+    	}
+    	.text-node{
+    	float:right;
+    	width:70%;
+    	text-align:center;
+    	}
+    	i{
+    	float:left;
+    	width:25%;
+    	text-align:center;
+    	}
+    `]
 })
 export class EmployeeBasicDetailsComponent implements OnInit{
     employee:Employee;

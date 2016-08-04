@@ -12,7 +12,15 @@ import {ErrorService} from "../errors/error.service";
                 <h5>{{employee?.division +","+employee?.department}}</h5>
             </div>
         </div>
-    `
+    `,
+    styles:[`
+        h3{
+            text-align:center;
+        }
+        h5{
+            text-align:center;
+        }
+    `]
 })
 export class EmployeeDisplayComponent{
 @Input() employee: Employee;
