@@ -3,6 +3,6 @@ export class Project{
        public organization : string,
        public name:string,
        public image:string,
-       public manager ?: string
+       public manager : string
     ){}
 }

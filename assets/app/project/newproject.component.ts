@@ -3,6 +3,7 @@ import {ControlGroup, FormBuilder, Validators} from "@angular/common";
 import {ProjectService} from "./project.service";
 import {AccordionComponentGroup} from "../utility/accordiongroup.component";
 import {AccordionComponent} from "../utility/accordion.component";
+import {Project} from "./project";
 @Component({
     selector : 'my-new-project',
     template:`
@@ -50,11 +51,15 @@ export class NewProjectComponent implements OnInit{
         this.myForm=this._fb.group({
             organization:['',Validators.required],
             name:['',Validators.required],
-            image:[''],
-            manager:['']
+            image:['',Validators.required],
+            manager:['',Validators.required]
         })
     }
     onSubmit(){
-        console.log('Submitted');
+        var project= new Project(this.myForm.value.organization,this.myForm.value.name,this.myForm.value.image,this.myForm.value.manager);
+        this.projectService.newProject(project).subscribe(
+            data => console.log(data),
+            error => console.log(error)
+        )
     }
 }

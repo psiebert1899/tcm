@@ -7,7 +7,7 @@ import {Injectable} from "@angular/core";
 export class ProjectService{
     constructor(private _http : Http){}
     getProjects(){
-        return this._http.get('http://localhost:3000/projects').map(
+        return this._http.get('http://localhost:3000/project').map(
             response =>{
                 const data = response.json().obj;
                 let projects = [];
@@ -30,7 +30,7 @@ export class ProjectService{
     newProject(project:Project){
         const body = JSON.stringify(project);
         const headers=new Headers({'Content-Type' : 'application/json'});
-        return this._http.post('http://localhost:3000/projects',body,headers).map(
+        return this._http.post('http://localhost:3000/project',body,{headers:headers}).map(
             response => response.json()
         ).catch(error => Observable.throw(error.json()));
     }
