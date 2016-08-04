@@ -5,6 +5,7 @@ import {Injectable} from "@angular/core";
 
 @Injectable()
 export class ProjectService{
+    projects : Project[];
     constructor(private _http : Http){}
     getProjects(){
         return this._http.get('http://localhost:3000/project').map(

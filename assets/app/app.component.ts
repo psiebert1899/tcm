@@ -11,6 +11,7 @@ import {NewEmployeeComponent} from "./employee/newemployee.component";
 import {EmployeeListComponent} from "./employee/employeelist";
 import {EditEmployeeComponent} from "./employee/editemployee.component";
 import {NewProjectComponent} from "./project/newproject.component";
+import {ProjectListComponent} from "./project/projectlist.component";
 
 @Component({
     selector: 'my-app',
@@ -48,7 +49,8 @@ import {NewProjectComponent} from "./project/newproject.component";
     {path:'/employee/new',component:NewEmployeeComponent},
     {path:'/employee/list', component: EmployeeListComponent},
     {path: '/employee/edit', component: EditEmployeeComponent},
-    {path: '/project/new',component:NewProjectComponent}
+    {path: '/project/new',component:NewProjectComponent},
+    {path: 'project/list', component:ProjectListComponent}
 ])
 export class AppComponent {
     
