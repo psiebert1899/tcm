@@ -4,7 +4,7 @@ import {ProjectService} from "./project.service";
 @Component({
     selector: `my-project-display`,
     template: `        
-        <div class="col-md-3" (click)="employeeClicked()">
+        <div class="col-md-2" (click)="employeeClicked()">
             <div class="thumbnail">
                 <img src="{{project.image}}" class="img img-responsive"/>
                 <h3>{{project.name}}</h3>

@@ -5,13 +5,25 @@ import {Project} from "./project";
 @Component({
     selector:'my-project-list',
     template:`
+    <h1>Project List</h1>
     <section class="col-md-12" *ngIf="dataLoaded">
             <div class="container-fluid">
                 <my-project-display *ngFor="let p of projects" [project]="p"></my-project-display>
             </div>
     </section>
     `,
-    directives:[ProjectDisplayComponent]
+    directives:[ProjectDisplayComponent],
+    styles:[`
+        h1{
+            color:white;
+            font-family: OpenSans;
+        }
+        .col-md-12{
+            background-color:white;
+            padding-top:25px;
+            border-radius:5px;
+        }
+    `]
 })
 export class ProjectListComponent{
     constructor(private _projectService:ProjectService){}

@@ -2,6 +2,7 @@ import {Injectable, EventEmitter} from "@angular/core";
 import {Http, Headers} from "@angular/http";
 import {Employee} from "./employee";
 import {Observable} from "rxjs/Rx";
+import {Query} from "../utility/query";
 @Injectable()
 export class EmployeeService{
     popEmployee=new EventEmitter<Employee>();
@@ -16,9 +17,9 @@ export class EmployeeService{
             response => response.json()
         ).catch(error => Observable.throw(error.json()))
     }
-    getEmployees(){
-        console.log("get Employees Route Reached");
-        return this._http.get("http://localhost:3000/employee").map(
+    getEmployees(query:Query){
+        query=query||new Query(null,null);
+        return this._http.get("http://localhost:3000/employee",query).map(
             response => {
                 const data = response.json().obj;
                 let emps  = [];
@@ -51,6 +52,7 @@ export class EmployeeService{
             }
         ).catch(error => Observable.throw(error.json()))
     }
+
     popEmployeeDetails(emp : Employee){
         console.log("service reached");
         this.popEmployee.emit(emp);

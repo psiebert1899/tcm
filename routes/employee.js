@@ -2,6 +2,22 @@ var express = require('express');
 var router = express.Router();
 var Employee=require('../models/employee');
 router.get("/", function(req,res,next){
+    if(req.query.type){
+        type=req.query.type;
+        value=req.query.value;
+        Employee.find({type:value}).exec(function(err,success){
+            if(err){
+                return res.status(500).json({
+                    title: 'An Error Occurred',
+                    error:err
+                })
+            }
+            res.status(200).json({
+                title:'Success',
+                obj:success
+            })
+        })
+    }
     Employee.find().exec(function(err,emps){
         if(err){
             return res.status(500).json({

@@ -9,6 +9,7 @@ import {Employee} from "./employee";
     selector: "my-new-employee",
     template:`
         <h1>New Employee</h1>
+        <div class="col-md-12">
         <form [ngFormModel]="myForm" (ngSubmit)="onSubmit()">
             <accordion>
                 <accordion-group heading="Required" isOpen="true">
@@ -147,8 +148,9 @@ import {Employee} from "./employee";
                 <accordion-group heading="Training (optional)"><h1>Training and Info</h1></accordion-group>
                 <accordion-group heading="Benefits (optional)"><h1>Benefits information</h1></accordion-group>
             </accordion>
-            <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+            <button type="submit" class="btn btn-primary btn-lg center-block">Submit</button>
         </form>
+        </div>
     `,
     providers:[EmployeeService],
     directives:[AccordionComponent,AccordionComponentGroup],
@@ -175,6 +177,22 @@ import {Employee} from "./employee";
             float:left;
             width:33%;
         }
+        h1{
+            color:white;
+            font-family:OpenSans;
+        }
+        .btn{
+            width:100%;
+            border-radius:0;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
+        .col-md-12{
+            background-color:white;
+            border-radius:5px;
+            padding:0;
+
+        }
     `]
 })
 export class NewEmployeeComponent implements OnInit{
@@ -183,8 +201,10 @@ export class NewEmployeeComponent implements OnInit{
     canManageEmployees = false;
     canManageProjects = false;
     hasManager = false;
+    managers:Employee[] = [];
     constructor(private _fb:FormBuilder,private _employeeService:EmployeeService,private _errorService : ErrorService){}
     ngOnInit(){
+        
         this.myForm=this._fb.group({
             firstName:['',Validators.required],
             lastName:['',Validators.required],

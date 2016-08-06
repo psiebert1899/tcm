@@ -6,6 +6,7 @@ import {EmployeeDisplayComponent} from "./employeedisplay.component";
 import {EmployeeDetailsComponent} from "./employeedetails.component";
 import {EmployeeBasicDetailsComponent} from "./employeebasicdetails.component";
 import {Routes} from "@angular/router";
+import {Query} from "../utility/query";
 @Component({
     selector : 'my-employee-list',
     template: `
@@ -38,7 +39,7 @@ export class EmployeeListComponent implements OnInit{
     employees: Employee[];
     dataLoaded =false;
     ngOnInit(){
-        this._employeeService.getEmployees().subscribe(
+        this._employeeService.getEmployees(new Query(null,null)).subscribe(
             employees => {
                 this.employees = employees;
                 this._employeeService.employees = employees;
