@@ -57,7 +57,7 @@ import {Employee} from "./employee";
                 </div>
                 </accordion-group>
                 <accordion-group heading="Employee Data (optional)">
-                    <div class="left-form">
+                    <div class="col-one">
                         <div class="form-group">
                             <label for="title">Title:</label>
                             <select id="title" [ngFormControl]="myForm.find('title')" class="form-control">
@@ -68,6 +68,26 @@ import {Employee} from "./employee";
                             </select>
                         </div>
                         <div class="form-group">
+                            <label>Has Direct Supervisor?</label>
+                            <div class="radio-inline">
+                                <label><input type="radio" name="hasManager" value="true" [ngFormControl]="myForm.find('hasManager')" (click)="handleRadioChange(true,'hasManager')"/>Yes</label>
+                            </div>
+                            <div class="radio-inline">
+                                <label><input type="radio" name="hasManager" value="false" checked [ngFormControl]="myForm.find('hasManager')" (click)="handleRadioChange(false,'hasManager')"/>No</label>
+                            </div>
+                        </div>
+                        <div class="form-group" *ngIf="hasManager">
+                            <label for="Manager">Manager</label>
+                            <select id="manager" [ngFormControl]="myForm.find('manager')" class="form-control" size="4">
+                                <option>Unassigned</option>
+                                <option>David Kaparis</option>
+                                <option>Ettore Soldi</option>
+                                <option>Jason McDonald</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-two">
+                        <div class="form-group">
                             <label for="division">Division</label>
                             <select id="division" [ngFormControl]="myForm.find('division')" class="form-control">
                                 <option>Hyla Soft USA</option>
@@ -76,25 +96,15 @@ import {Employee} from "./employee";
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="department">Department</label>
-                            <select id="department" [ngFormControl]="myForm.find('department')" class="form-control">
-                                <option>Software</option>
-                                <option>PLM</option>
-                                <option>MES</option>
-                            </select>
+                        <label>Manages Others?</label>
+                            <div class="radio-inline">
+                                <label><input type="radio" name="canManageEmployees" value="true" [ngFormControl]="myForm.find('canManageEmployees')"(click)="handleRadioChange(true,'canManageEmployees')"/>Yes</label>
+                            </div>
+                            <div class="radio-inline">
+                                <label><input type="radio" name="canManageEmployees" value="false" [ngFormControl]="myForm.find('canManageEmployees')"  (click)="handleRadioChange(false,'canManageEmployees')" checked/>No</label>
+                            </div>
                         </div>
-                                                <div class="form-group">
-                            <label for="Manager">Manager</label>
-                            <select id="manager" [ngFormControl]="myForm.find('manager')" class="form-control">
-                                <option>Unassigned</option>
-                                <option>David Kaparis</option>
-                                <option>Ettore Soldi</option>
-                                <option>Jason McDonald</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="right-form">
-                        <div class="form-group">
+                        <div class="form-group" *ngIf="canManageEmployees">
                             <label for="employees">Employees</label>
                             <select id="employees" [ngFormControl]="myForm.find('employees')" multiple class="form-control">
                                 <option>Paul Siebert</option>
@@ -104,9 +114,28 @@ import {Employee} from "./employee";
                                 <option>Logan Habben</option>
                             </select>
                         </div>
+                    </div>
+                    <div class="col-three">
                         <div class="form-group">
-                            <label for="projects">Projects</label>
-                            <select id="projects" [ngFormControl]="myForm.find('projects')" multiple class="form-control">
+                            <label for="department">Department</label>
+                            <select id="department" [ngFormControl]="myForm.find('department')" class="form-control">
+                                <option>Software</option>
+                                <option>PLM</option>
+                                <option>MES</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Manages Projects?</label>
+                            <div class="radio-inline">
+                                <label><input type="radio" name="canManageProjects" [ngFormControl]="myForm.find('canManageProjects')" (click)="handleRadioChange(true,'canManageProjects')" value="true"/>Yes</label>
+                            </div>
+                            <div class="radio-inline">
+                                <label><input type="radio" name="canManageProjects" value="false" [ngFormControl]="myForm.find('canManageProjects')"(click)="handleRadioChange(false,'canManageProjects')" checked/>No</label>
+                            </div>
+                        </div>
+                        <div class="form-group" *ngIf="canManageProjects">
+                            <label for="projects">Project Manager For:</label>
+                            <select id="projects" [ngFormControl]="myForm.find('projectManagerFor')" multiple class="form-control">
                                 <option>Kuka</option>
                                 <option>Monsanto</option>
                                 <option>Williams</option>
@@ -132,11 +161,28 @@ import {Employee} from "./employee";
             float:right;
             width:49%;
         }
+        .col-one{
+            float:left;
+            width:33%;
+        }
+        .col-two{
+            float:left;
+            width:30%;
+            margin-right:2%;
+            margin-left:2%;
+        }
+        .col-three{
+            float:left;
+            width:33%;
+        }
     `]
 })
 export class NewEmployeeComponent implements OnInit{
     myForm:ControlGroup;
     country:String='';
+    canManageEmployees = false;
+    canManageProjects = false;
+    hasManager = false;
     constructor(private _fb:FormBuilder,private _employeeService:EmployeeService,private _errorService : ErrorService){}
     ngOnInit(){
         this.myForm=this._fb.group({
@@ -155,7 +201,11 @@ export class NewEmployeeComponent implements OnInit{
             department:[''],
             projects: [''],
             employees: [''],
-            manager: ['']
+            manager: [''],
+            hasManager: [''],
+            canManageEmployees: [''],
+            canManageProjects: [''],
+            projectManagerFor: ['']
         })
     }
     onCountryChange(val){
@@ -178,13 +228,29 @@ export class NewEmployeeComponent implements OnInit{
             this.myForm.value.department,
             this.myForm.value.manager,
             this.myForm.value.employees,
-            this.myForm.value.projects
+            this.myForm.value.projects,
+            this.myForm.value.canManageEmployees,
+            this.myForm.value.canManageProjects,
+            this.myForm.value.hasManager,
+            this.myForm.value.projectManagerFor
+            
         );
         console.log(employee);
         this._employeeService.createUser(employee).subscribe(
             data => console.log(data),
             error => console.log(error)
         )
+    }
+    handleRadioChange(value,forField){
+        if(forField=="canManageEmployees"){
+            this.canManageEmployees=value;
+        }
+        if(forField=="canManageProjects"){
+            this.canManageProjects=value;
+        }
+        if(forField=="hasManager"){
+            this.hasManager=value;
+        }
     }
     private isEmail(control : Control): {[s:string]:boolean}{
         if(!control.value.match("[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?")){

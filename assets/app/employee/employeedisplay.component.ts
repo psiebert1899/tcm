@@ -5,7 +5,7 @@ import {ErrorService} from "../errors/error.service";
 @Component({
     selector: 'my-employee-display',
     template:`
-        <div class="col-md-3" (click)="employeeClicked()">
+        <div class="col-md-2" (click)="employeeClicked()">
             <div class="thumbnail">
                 <img src="{{employee.image}}" class="img img-responsive"/>
                 <h3>{{employee.firstName + " " + employee.lastName}}</h3>

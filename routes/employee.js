@@ -31,8 +31,11 @@ router.post("/",function(req,res,next){
         department: req.body.department,
         manager: req.body.manager,
         employees : req.body.employees,
-        projects: req.body.projects
-
+        projects: req.body.projects,
+        canManageEmployees:req.body.canManageEmployees,
+        canManageProjects:req.body.canManageProjects,
+        hasManager:req.body.hasManager,
+        projectManagerFor:req.body.projectManagerFor
     })
     console.log(employee);
     employee.save(function(err,result){

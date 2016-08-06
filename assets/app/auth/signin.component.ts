@@ -7,7 +7,8 @@ import {AuthenticationService} from "./authentication.service";
 @Component({
     selector: 'my-signin',
     template: `
-        <section class="col-md-8 col-md-offset-2">
+<h1>Please Sign In To Continue</h1>
+        <section class="col-md-6 col-md-offset-3">
             <form [ngFormModel]="myForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label for="email">Email Address</label>
@@ -17,10 +18,29 @@ import {AuthenticationService} from "./authentication.service";
                     <label for="password">Password</label>
                     <input type="password" id="password" class="form-control" [ngFormControl]="myForm.find('password')"/>
                 </div>
-                <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Sign Up</button>
+                <button type="submit" class="btn btn-primary btn-lg center-block" [disabled]="!myForm.valid">Sign In</button>
             </form>            
         </section>
-    `
+    `,
+    styles:[`
+        .col-md-6{
+            background-color:white;
+            border-radius:10px;
+            padding-top:25px;
+            padding-bottom:25px;
+            
+        }
+        h1{
+            text-align: center;
+            font-family:Open-Sans;
+            color:white;
+            margin-bottom:25px;
+            margin-top:10%;
+        }
+        button{
+            margin-left:auto
+        }
+    `]
 })
 export class SigninComponent implements OnInit{
     myForm:ControlGroup;

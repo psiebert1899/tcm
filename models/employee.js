@@ -15,7 +15,11 @@ var schema = new Schema({
     department : {type: String},
     manager : {type: String},
     employees : [{type: String}],
-    projects : [{type: String}]
+    projects : [{type: String}],
+    hasManager:{type:Boolean, required:true , default:false},
+    canManageEmployees: {type:Boolean,required: true,default:false},
+    canManageProjects:{type:Boolean ,required:true,default:false},
+    projectManagerFor:[{type:String}]
 
 });
 

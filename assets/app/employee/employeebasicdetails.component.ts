@@ -21,8 +21,8 @@ import {Employee} from "./employee";
                 <div class="col-md-4 col-md-offset-1">
                     <ul class="list-group" id="mylist">
                         <li class="list-group-item" id="top">Title: <span class="badge">{{employee?.title}}</span></li>
-                        <li class="list-group-item">Manager:<a href="#" class="badge">{{employee?.manager}}</a></li>
-                        <li class="list-group-item">Employees: <span class="badge">{{employee?.employees}}</span></li>
+                        <li class="list-group-item" *ngIf="employee?.hasManager">Manager:<a href="#" class="badge">{{employee?.manager}}</a></li>
+                        <li class="list-group-item" *ngIf="employee?.canManageEmployees">Employees: <span class="badge">{{employee?.employees}}</span></li>
                         <li class="list-group-item">Projects: <span class="badge">{{employee?.projects}}</span></li>
                         <li class="list-group-item" id="bottom">Avaliability: <span class="badge">0%</span></li>
                     </ul>

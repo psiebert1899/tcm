@@ -16,7 +16,7 @@ import {ApplicationUser} from "./user/applicationuser";
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                       </button>
-                      <a class="navbar-brand" href="#">Brand</a>
+                      <a class="navbar-brand" href="#">TCM</a>
                     </div>
                 
                     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -83,6 +83,9 @@ import {ApplicationUser} from "./user/applicationuser";
                 .router-link-active{
                     background-color: #337ab7;
                     color: white;
+                }
+                .navbar-brand{
+                    font-family: NEORD;
                 }
             `],
     directives: [ROUTER_DIRECTIVES]

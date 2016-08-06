@@ -36,7 +36,6 @@ import {ProjectListComponent} from "./project/projectlist.component";
         #myContainer{
             width:80%;
             margin-left:10%;
-
             margin-top:0px;
         }
     `]

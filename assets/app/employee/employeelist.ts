@@ -9,6 +9,7 @@ import {Routes} from "@angular/router";
 @Component({
     selector : 'my-employee-list',
     template: `
+        <h1>Employee List</h1>
         <section class="col-md-12" *ngIf="dataLoaded">
             <div class="container-fluid">
                 <my-employee-display *ngFor="let e of employees" [employee]="e"></my-employee-display>
@@ -16,7 +17,18 @@ import {Routes} from "@angular/router";
         </section>
         <my-employee-details></my-employee-details>
     `,
-    directives : [EmployeeDisplayComponent,EmployeeDetailsComponent,EmployeeBasicDetailsComponent]
+    directives : [EmployeeDisplayComponent,EmployeeDetailsComponent,EmployeeBasicDetailsComponent],
+    styles:[`
+        h1{
+            font-family:OpenSans;
+            color:white;
+        }
+        .col-md-12{
+            background-color:white;
+            border-radius:5px;
+            padding-top:25px;
+        }
+    `]
 })
 @Routes([
     {path: '/basic' , component : EmployeeBasicDetailsComponent}
