@@ -5,6 +5,7 @@ import {FormBuilder, ControlGroup, Validators, Control} from "@angular/common";
 import {AccordionComponentGroup} from "../utility/accordiongroup.component";
 import {AccordionComponent} from "../utility/accordion.component";
 import {Employee} from "./employee";
+import {Query} from "../utility/query";
 @Component({
     selector: "my-new-employee",
     template:`
@@ -80,10 +81,7 @@ import {Employee} from "./employee";
                         <div class="form-group" *ngIf="hasManager">
                             <label for="Manager">Manager</label>
                             <select id="manager" [ngFormControl]="myForm.find('manager')" class="form-control" size="4">
-                                <option>Unassigned</option>
-                                <option>David Kaparis</option>
-                                <option>Ettore Soldi</option>
-                                <option>Jason McDonald</option>
+                                <option *ngFor="let m of managers">{{m.firstName + " " + m.lastName}}</option>
                             </select>
                         </div>
                     </div>
@@ -204,7 +202,10 @@ export class NewEmployeeComponent implements OnInit{
     managers:Employee[] = [];
     constructor(private _fb:FormBuilder,private _employeeService:EmployeeService,private _errorService : ErrorService){}
     ngOnInit(){
-        
+        this._employeeService.getEmployees(new Query('canManageEmployees',true)).subscribe(
+            response => this.managers=response,
+            error=> console.log(error)
+        )
         this.myForm=this._fb.group({
             firstName:['',Validators.required],
             lastName:['',Validators.required],
@@ -249,9 +250,9 @@ export class NewEmployeeComponent implements OnInit{
             this.myForm.value.manager,
             this.myForm.value.employees,
             this.myForm.value.projects,
-            this.myForm.value.canManageEmployees,
-            this.myForm.value.canManageProjects,
-            this.myForm.value.hasManager,
+            this.canManageEmployees,
+            this.canManageProjects,
+            this.hasManager,
             this.myForm.value.projectManagerFor
             
         );

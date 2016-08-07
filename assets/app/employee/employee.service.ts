@@ -18,8 +18,12 @@ export class EmployeeService{
         ).catch(error => Observable.throw(error.json()))
     }
     getEmployees(query:Query){
-        query=query||new Query(null,null);
-        return this._http.get("http://localhost:3000/employee",query).map(
+        console.log(query);
+        var querystring='';
+        if(query.value!=''){
+            querystring='?type='+query.type+"&value="+query.value;
+        }
+        return this._http.get("http://localhost:3000/employee"+querystring).map(
             response => {
                 const data = response.json().obj;
                 let emps  = [];
