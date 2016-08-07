@@ -6,6 +6,8 @@ import {AccordionComponentGroup} from "../utility/accordiongroup.component";
 import {AccordionComponent} from "../utility/accordion.component";
 import {Employee} from "./employee";
 import {Query} from "../utility/query";
+import {ProjectService} from "../project/project.service";
+import {Project} from "../project/project";
 @Component({
     selector: "my-new-employee",
     template:`
@@ -106,11 +108,7 @@ import {Query} from "../utility/query";
                         <div class="form-group" *ngIf="canManageEmployees">
                             <label for="employees">Employees</label>
                             <select id="employees" [ngFormControl]="myForm.find('employees')" multiple class="form-control">
-                                <option>Paul Siebert</option>
-                                <option>Casey Townsend</option>
-                                <option>Jon Netzky</option>
-                                <option>Dario Casula</option>
-                                <option>Logan Habben</option>
+                                <option *ngFor="let e of employees">{{e.firstName + " " + e.lastName}}</option>
                             </select>
                         </div>
                     </div>
@@ -135,9 +133,7 @@ import {Query} from "../utility/query";
                         <div class="form-group" *ngIf="canManageProjects">
                             <label for="projects">Project Manager For:</label>
                             <select id="projects" [ngFormControl]="myForm.find('projectManagerFor')" multiple class="form-control">
-                                <option>Kuka</option>
-                                <option>Monsanto</option>
-                                <option>Williams</option>
+                                <option *ngFor="let p of projects">{{p.name}}</option>
                             </select>
                         </div>
                     </div>
@@ -200,11 +196,21 @@ export class NewEmployeeComponent implements OnInit{
     canManageProjects = false;
     hasManager = false;
     managers:Employee[] = [];
-    constructor(private _fb:FormBuilder,private _employeeService:EmployeeService,private _errorService : ErrorService){}
+    employees:Employee[] =[];
+    projects:Project[] = [];
+    constructor(private _fb:FormBuilder,private _employeeService:EmployeeService,private _projectService:ProjectService,private _errorService : ErrorService){}
     ngOnInit(){
         this._employeeService.getEmployees(new Query('canManageEmployees',true)).subscribe(
             response => this.managers=response,
             error=> console.log(error)
+        )
+        this._employeeService.getEmployees(new Query(null,null)).subscribe(
+            response => this.employees=response,
+            error => console.log(error)
+        )
+        this._projectService.getProjects().subscribe(
+            response => this.projects=response,
+            error => console.log(error)
         )
         this.myForm=this._fb.group({
             firstName:['',Validators.required],

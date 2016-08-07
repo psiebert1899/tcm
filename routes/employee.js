@@ -3,17 +3,6 @@ var router = express.Router();
 var Employee=require('../models/employee');
 router.get("/", function(req,res,next){
     if(req.query.type!=='null'){
-        console.log("***************************************************")
-        console.log("***************************************************")
-        console.log("***************************************************")
-        console.log("***************************************************")
-        console.log("***************************************************")
-        console.log("***************************************************")
-        console.log("***************************************************")
-        console.log("***************************************************")
-        console.log("***************************************************")
-        console.log("***************************************************")
-        console.log(req.query)
         type=req.query.type;
         value=req.query.value;
         Employee.find().where(type, value).exec(function(err,success){
