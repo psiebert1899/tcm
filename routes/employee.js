@@ -35,8 +35,9 @@ router.get("/", function(req,res,next){
 })
 
 router.post("/",function(req,res,next){
-    console.log("ROUTE REACHED");
-    console.log(req.body.canManageEmployees)
+    console.log("projects");
+    console.log(req.body.projects);
+    console.log("end projects");
     var employee = new Employee({
         email: req.body.email,
         firstName: req.body.firstName,
@@ -56,10 +57,9 @@ router.post("/",function(req,res,next){
         hasManager:req.body.hasManager,
         projectManagerFor:req.body.projectManagerFor
     })
-    console.log(employee);
     employee.save(function(err,result){
         if(err){
-            res.status(500).json({
+            return res.status(500).json({
                 title: "An Error Has Occurred",
                 error: err
             })

@@ -17,6 +17,7 @@ export class Employee{
     public canManageEmployees ?: boolean,
     public canManageProjects ?: boolean,
     public hasManager ?: boolean,
-    public projectManagerFor ?: string[]
+    public projectManagerFor ?: string[],
+    public _id ?: string
     ){}
 }

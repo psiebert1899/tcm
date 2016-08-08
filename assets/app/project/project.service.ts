@@ -17,7 +17,8 @@ export class ProjectService{
                         data[x].organization,
                         data[x].name,
                         data[x].image,
-                        data[x].manager
+                        data[x].manager,
+                        data[x]._id
                     )
                     projects.push(project);
                 }

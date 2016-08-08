@@ -108,7 +108,7 @@ import {Project} from "../project/project";
                         <div class="form-group" *ngIf="canManageEmployees">
                             <label for="employees">Employees</label>
                             <select id="employees" [ngFormControl]="myForm.find('employees')" multiple class="form-control">
-                                <option *ngFor="let e of employees">{{e.firstName + " " + e.lastName}}</option>
+                                <option *ngFor="let e of employees" [value]="e._id">{{e.firstName + " " + e.lastName}}</option>
                             </select>
                         </div>
                     </div>
@@ -133,7 +133,7 @@ import {Project} from "../project/project";
                         <div class="form-group" *ngIf="canManageProjects">
                             <label for="projects">Project Manager For:</label>
                             <select id="projects" [ngFormControl]="myForm.find('projectManagerFor')" multiple class="form-control">
-                                <option *ngFor="let p of projects">{{p.name}}</option>
+                                <option *ngFor="let p of projects" [value]="p._id">{{p.name}}</option>
                             </select>
                         </div>
                     </div>
@@ -196,8 +196,10 @@ export class NewEmployeeComponent implements OnInit{
     canManageProjects = false;
     hasManager = false;
     managers:Employee[] = [];
-    employees:Employee[] =[];
-    projects:Project[] = [];
+    employees =[];
+    projects = [];
+    projectsManaged=[];
+    selectedEmployees=[];
     constructor(private _fb:FormBuilder,private _employeeService:EmployeeService,private _projectService:ProjectService,private _errorService : ErrorService){}
     ngOnInit(){
         this._employeeService.getEmployees(new Query('canManageEmployees',true)).subscribe(
@@ -240,7 +242,29 @@ export class NewEmployeeComponent implements OnInit{
         console.log(val);
     }
     onSubmit(){
-        console.log('submitted');
+        if(this.myForm.value.canManageProjects) {
+            var projElement = <HTMLSelectElement>document.getElementById('projects');
+            if(projElement!==null) {
+                for (var x = 0; x < projElement.options.length; x++) {
+                    var option =<HTMLOptionElement>projElement.options[x];
+                    if(option.selected){
+                        this.projects.push(option.value)
+                    }
+                    this.projects.push(projElement.selectedOptions[x]);
+                }
+            }
+        }
+        if(this.myForm.value.canManageEmployees) {
+            var empEle = <HTMLSelectElement>document.getElementById('employees');
+            if(empEle !==null) {
+                for (var x = 0; x < empEle.length; x++) {
+                    var option = <HTMLOptionElement>empEle.options[x];
+                    if (option.selected) {
+                        this.selectedEmployees.push(option.value);
+                    }
+                }
+            }
+        }
         const employee = new Employee(
             this.myForm.value.email,
             null,
@@ -254,15 +278,14 @@ export class NewEmployeeComponent implements OnInit{
             this.myForm.value.division,
             this.myForm.value.department,
             this.myForm.value.manager,
-            this.myForm.value.employees,
-            this.myForm.value.projects,
+            this.selectedEmployees,
+            this.projectsManaged,
             this.canManageEmployees,
             this.canManageProjects,
             this.hasManager,
-            this.myForm.value.projectManagerFor
+            this.projectsManaged
             
         );
-        console.log(employee);
         this._employeeService.createUser(employee).subscribe(
             data => console.log(data),
             error => console.log(error)
