@@ -15,7 +15,6 @@ export class UserService{
         return this._http.post('http://localhost:3000/appUser/'+'?appId='+localStorage.getItem('appUser')+token,'',{headers : headers}).map(
             response => {
                 const data = response.json().obj;
-                console.log(data);
                 var appUser = new ApplicationUser(data.email, data.firstName, data.lastName,data.image,data.userId,null,null);
                 this.broadcastUser.emit(appUser);
                 this.user= appUser;

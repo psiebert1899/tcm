@@ -10,7 +10,6 @@ export class EmployeeService{
     constructor(private _http:Http){}
     employees : Employee[];
     createUser(employee:Employee){
-        console.log("service reached");
         const body = JSON.stringify(employee);
         console.log(body);
         const headers = new Headers({'Content-Type' : 'application/json'});
@@ -19,7 +18,6 @@ export class EmployeeService{
         ).catch(error => Observable.throw(error.json()))
     }
     getEmployees(query:Query){
-        console.log(query);
         var querystring='';
         if(query.value!=''){
             querystring='?type='+query.type+"&value="+query.value;
@@ -51,6 +49,7 @@ export class EmployeeService{
                     for(let k= 0; k<data[i].projects.length;k++){
                         employee.projects.push(data[i].projects[k]);
                     }
+                    console.log(employee.projects);
                     employee._id=data[i]._id;
                     employee.canManageEmployees=data[i].canManageEmployees;
                     employee.canManageProjects=data[i].canManageProjects;
@@ -63,7 +62,6 @@ export class EmployeeService{
     }
 
     popEmployeeDetails(emp : Employee){
-        console.log("service reached");
         this.popEmployee.emit(emp);
     }
     selectEmployee(emp:Employee){

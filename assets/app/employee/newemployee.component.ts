@@ -106,12 +106,6 @@ import {Router} from "@angular/router";
                                 <label><input type="radio" name="canManageEmployees" value="false" [ngFormControl]="myForm.find('canManageEmployees')"  (click)="handleRadioChange(false,'canManageEmployees')" checked/>No</label>
                             </div>
                         </div>
-                        <div class="form-group" *ngIf="canManageEmployees">
-                            <label for="employees">Employees</label>
-                            <select id="employees" [ngFormControl]="myForm.find('employees')" multiple class="form-control">
-                                <option *ngFor="let e of employees" [value]="e._id">{{e.firstName + " " + e.lastName}}</option>
-                            </select>
-                        </div>
                     </div>
                     <div class="col-three">
                         <div class="form-group">
@@ -131,13 +125,31 @@ import {Router} from "@angular/router";
                                 <label><input type="radio" name="canManageProjects" value="false" [ngFormControl]="myForm.find('canManageProjects')"(click)="handleRadioChange(false,'canManageProjects')" checked/>No</label>
                             </div>
                         </div>
-                        <div class="form-group" *ngIf="canManageProjects">
+                    </div>
+                </accordion-group>
+                <accordion-group heading="Projects Managed" *ngIf="canManageProjects">
+                        <div class="form-group">
                             <label for="projects">Project Manager For:</label>
-                            <select id="projects" [ngFormControl]="myForm.find('projectManagerFor')" multiple class="form-control">
+                            <select id="projectsManaged" [ngFormControl]="myForm.find('projectManagerFor')" multiple class="form-control">
                                 <option *ngFor="let p of projects" [value]="p._id">{{p.name}}</option>
                             </select>
                         </div>
-                    </div>
+                </accordion-group>
+                <accordion-group heading="Employees" *ngIf="canManageEmployees">
+                    <div class="form-group" *ngIf="canManageEmployees">
+                            <label for="employees">Employees</label>
+                            <select id="employees" [ngFormControl]="myForm.find('employees')" multiple class="form-control">
+                                <option *ngFor="let e of employees" [value]="e._id">{{e.firstName + " " + e.lastName}}</option>
+                            </select>
+                        </div>
+                </accordion-group>
+                <accordion-group heading="Projects">
+                        <div class="form-group">
+                            <label for="projects">Projects:</label>
+                            <select id="projects" [ngFormControl]="myForm.find('projects')" multiple class="form-control">
+                                <option *ngFor="let p of projects" [value]="p._id">{{p.name}}</option>
+                            </select>
+                        </div>
                 </accordion-group>
                 <accordion-group heading="Resume (optional)"><h1>Resume Upload Capability & skills section</h1></accordion-group>
                 <accordion-group heading="Training (optional)"><h1>Training and Info</h1></accordion-group>
@@ -245,13 +257,22 @@ export class NewEmployeeComponent implements OnInit{
     }
     onSubmit(){
         if(this.myForm.value.canManageProjects) {
-            var projElement = <HTMLSelectElement>document.getElementById('projects');
+            var managedProjectElement = <HTMLSelectElement>document.getElementById('projectsManaged');
             if(projElement!==null) {
-                for (var x = 0; x < projElement.options.length; x++) {
-                    var option =<HTMLOptionElement>projElement.options[x];
+                for (var x = 0; x < managedProjectElement.options.length; x++) {
+                    var option =<HTMLOptionElement>managedProjectElement.options[x];
                     if(option.selected){
-                        this.selectedProjects.push(option.value)
+                        this.projectsManaged.push(option.value)
                     }
+                }
+            }
+        }
+        var projElement = <HTMLSelectElement>document.getElementById('projects');
+        if(projElement!==null) {
+            for (var x = 0; x < projElement.options.length; x++) {
+                var option =<HTMLOptionElement>projElement.options[x];
+                if(option.selected){
+                    this.selectedProjects.push(option.value)
                 }
             }
         }
@@ -281,7 +302,7 @@ export class NewEmployeeComponent implements OnInit{
             this.myForm.value.department,
             this.myForm.value.manager,
             this.selectedEmployees,
-            this.projectsManaged,
+            this.selectedProjects,
             this.canManageEmployees,
             this.canManageProjects,
             this.hasManager,
