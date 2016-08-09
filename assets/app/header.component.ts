@@ -1,8 +1,13 @@
 import {Component, OnInit} from "@angular/core";
+import {ControlGroup, FormBuilder, Validators, Control} from "@angular/common";
+import {Router} from "@angular/router";
 import {ROUTER_DIRECTIVES, Routes} from "@angular/router";
+
+import {User} from "./auth/user";
 import {AuthenticationService} from "./auth/authentication.service";
 import {UserService} from "./user/user.service";
 import {ApplicationUser} from "./user/applicationuser";
+
 @Component({
     selector: 'my-header',
     template:`
@@ -60,8 +65,14 @@ import {ApplicationUser} from "./user/applicationuser";
                         </li>
                       </ul>
                       <ul class="nav navbar-nav navbar-right">
-                      <li *ngIf="isLoggedIn()"><a [routerLink]="['/user/profile']">{{loggedUser!=undefined?loggedUser.firstName+" " + loggedUser.lastName : 'Default User'}}</a></li>
-                        <li><a [routerLink]="['/auth/signin']" *ngIf="!isLoggedIn()">Sign In</a></li>
+                        <li *ngIf="isLoggedIn()"><a [routerLink]="['/user/profile']">{{loggedUser!=undefined?loggedUser.firstName+" " + loggedUser.lastName : 'Default User'}}</a></li>
+                        <li *ngIf="!isLoggedIn()">
+                          <form [ngFormModel]="myForm" (ngSubmit)="onSubmit()">                           
+                              <input type="email" id="email" placeholder="Email Address"  [ngFormControl]="myForm.find('email')"/>
+                              <input type="password" id="password" placeholder="Password" [ngFormControl]="myForm.find('password')"/>
+                              <button type="submit" class="btn btn-primary">Sign in</button>                            
+                          </form>
+                        </li>
                         <li><a [routerLink]="['/auth/signup']" *ngIf="!isLoggedIn()">Sign Up</a></li>
                         <li><a [routerLink]="['auth/logout']" *ngIf="isLoggedIn()">Sign Out</a></li>
                       </ul>
@@ -93,7 +104,13 @@ import {ApplicationUser} from "./user/applicationuser";
 
 export class HeaderComponent implements OnInit{
     public loggedUser : ApplicationUser;
-    constructor(private _authService:AuthenticationService,private _userService : UserService){}
+    public myForm: ControlGroup;
+    constructor(private _authService:AuthenticationService, private _router :Router, private _userService : UserService){
+      this.myForm = new ControlGroup({
+          email: new Control(""),
+          password: new Control("")
+      });
+    }
 
     isLoggedIn(){
         return this._authService.isLoggedIn();
@@ -111,6 +128,23 @@ export class HeaderComponent implements OnInit{
         this._userService.broadcastUser.subscribe(
             data=>this.loggedUser=data,
             error => console.log(error)
+        )
+    }
+    onSubmit(){
+      
+      const user:User = new User(this.myForm.value.email,this.myForm.value.password);
+        this._authService.signin(user).subscribe(
+            data => {
+                console.log(data);
+                localStorage.setItem('token',data.obj);
+                localStorage.setItem('userId',data.userId);
+                localStorage.setItem('appUser',data.applicationUser._id);
+                this._router.navigateByUrl('/user/profile');
+            },
+            error => {
+                this._errorService.handleError(error);
+                console.log(error);
+            }
         )
     }
     getUserName(){

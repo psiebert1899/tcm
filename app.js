@@ -10,7 +10,6 @@ var employeeRoutes=require('./routes/employee');
 var appRoutes = require('./routes/app');
 var userRoutes =require('./routes/authentication');
 var appUserRoutes = require('./routes/users');
-var projectRoutes = require('./routes/project');
 
 var app = express();
 mongoose.connect('localhost:27017/tcm');
@@ -20,7 +19,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 // uncomment after placing your favicon in /public
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public','imgs','bluesquare.png')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -34,7 +33,6 @@ app.use(function(req, res, next) {
 });
 app.use('/employee',employeeRoutes);
 app.use('/appUser',appUserRoutes);
-app.use('/project',projectRoutes);
 app.use('/user',userRoutes);
 app.use('/', appRoutes);
 
