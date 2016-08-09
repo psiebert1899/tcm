@@ -21,7 +21,8 @@ a.danger {
 .spacing {
   margin-bottom: 20px;
 }
-/*
-#mylist{
-  font-size:1.3em;
-}*/
+@font-face{
+  font-family:OpenSans;
+  src:url(../fonts/OpenSans-Regular.ttf);
+}
+

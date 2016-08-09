@@ -13,6 +13,11 @@ export class Employee{
     public department ?:string,
     public manager ?:string,
     public employees ?: string[],
-    public projects ?: string[]
+    public projects ?: string[],
+    public canManageEmployees ?: boolean,
+    public canManageProjects ?: boolean,
+    public hasManager ?: boolean,
+    public projectManagerFor ?: string[],
+    public _id ?: string
     ){}
 }

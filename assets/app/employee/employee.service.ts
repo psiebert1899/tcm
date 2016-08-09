@@ -2,6 +2,7 @@ import {Injectable, EventEmitter} from "@angular/core";
 import {Http, Headers} from "@angular/http";
 import {Employee} from "./employee";
 import {Observable} from "rxjs/Rx";
+import {Query} from "../utility/query";
 @Injectable()
 export class EmployeeService{
     popEmployee=new EventEmitter<Employee>();
@@ -11,14 +12,19 @@ export class EmployeeService{
     createUser(employee:Employee){
         console.log("service reached");
         const body = JSON.stringify(employee);
+        console.log(body);
         const headers = new Headers({'Content-Type' : 'application/json'});
         return this._http.post('http://localhost:3000/employee',body,{headers:headers}).map(
             response => response.json()
         ).catch(error => Observable.throw(error.json()))
     }
-    getEmployees(){
-        console.log("get Employees Route Reached");
-        return this._http.get("http://localhost:3000/employee").map(
+    getEmployees(query:Query){
+        console.log(query);
+        var querystring='';
+        if(query.value!=''){
+            querystring='?type='+query.type+"&value="+query.value;
+        }
+        return this._http.get("http://localhost:3000/employee"+querystring).map(
             response => {
                 const data = response.json().obj;
                 let emps  = [];
@@ -45,12 +51,17 @@ export class EmployeeService{
                     for(let k= 0; k<data[i].projects.length;k++){
                         employee.projects.push(data[i].projects[k]);
                     }
+                    employee._id=data[i]._id;
+                    employee.canManageEmployees=data[i].canManageEmployees;
+                    employee.canManageProjects=data[i].canManageProjects;
+                    employee.hasManager=data[i].hasManager;
                     emps.push(employee);
                 }
                 return emps
             }
         ).catch(error => Observable.throw(error.json()))
     }
+
     popEmployeeDetails(emp : Employee){
         console.log("service reached");
         this.popEmployee.emit(emp);

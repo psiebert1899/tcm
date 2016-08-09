@@ -6,9 +6,11 @@ import {EmployeeDisplayComponent} from "./employeedisplay.component";
 import {EmployeeDetailsComponent} from "./employeedetails.component";
 import {EmployeeBasicDetailsComponent} from "./employeebasicdetails.component";
 import {Routes} from "@angular/router";
+import {Query} from "../utility/query";
 @Component({
     selector : 'my-employee-list',
     template: `
+        <h1>Employee List</h1>
         <section class="col-md-12" *ngIf="dataLoaded">
             <div class="container-fluid">
                 <my-employee-display *ngFor="let e of employees" [employee]="e"></my-employee-display>
@@ -16,7 +18,18 @@ import {Routes} from "@angular/router";
         </section>
         <my-employee-details></my-employee-details>
     `,
-    directives : [EmployeeDisplayComponent,EmployeeDetailsComponent,EmployeeBasicDetailsComponent]
+    directives : [EmployeeDisplayComponent,EmployeeDetailsComponent,EmployeeBasicDetailsComponent],
+    styles:[`
+        h1{
+            font-family:OpenSans;
+            color:white;
+        }
+        .col-md-12{
+            background-color:white;
+            border-radius:5px;
+            padding-top:25px;
+        }
+    `]
 })
 @Routes([
     {path: '/basic' , component : EmployeeBasicDetailsComponent}
@@ -26,7 +39,7 @@ export class EmployeeListComponent implements OnInit{
     employees: Employee[];
     dataLoaded =false;
     ngOnInit(){
-        this._employeeService.getEmployees().subscribe(
+        this._employeeService.getEmployees(new Query(null,null)).subscribe(
             employees => {
                 this.employees = employees;
                 this._employeeService.employees = employees;

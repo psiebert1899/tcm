@@ -1,8 +1,9 @@
 import {Component, OnInit} from "@angular/core";
 import {Employee} from "./employee";
 import {EmployeeService} from "./employee.service";
-import {Routes, ROUTER_DIRECTIVES} from "@angular/router";
+import {Routes, ROUTER_DIRECTIVES, Router} from "@angular/router";
 import {EmployeeBasicDetailsComponent} from "./employeebasicdetails.component";
+import {EditEmployeeComponent} from "./editemployee.component";
 @Component({
     selector : 'my-employee-details',
     template: `
@@ -60,7 +61,7 @@ import {EmployeeBasicDetailsComponent} from "./employeebasicdetails.component";
 export class EmployeeDetailsComponent implements OnInit{
     employeeDisplay='none';
     employeeData : Employee;
-    constructor(private _employeeService:EmployeeService){}
+    constructor(private _employeeService:EmployeeService,private _router:Router ){}
     ngOnInit(){
         this._employeeService.popEmployee.subscribe(
             data =>{
@@ -68,11 +69,16 @@ export class EmployeeDetailsComponent implements OnInit{
                 this.employeeDisplay='block';
             }
         )
+        this._employeeService.selectedEmployeeChanged.subscribe(
+            data => {
+                this.employeeData = data;
+            }
+        )
     }
     onEmployeeClosed(){
         this.employeeDisplay='none';
     }
     onEmployeeEdit(){
-
+       this._router.navigateByUrl('/employee/edit');
     }
 }

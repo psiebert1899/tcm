@@ -9,6 +9,9 @@ import {ErrorComponent} from "./errors/error.component";
 import {UserHomeComponent} from "./user/userhome.component";
 import {NewEmployeeComponent} from "./employee/newemployee.component";
 import {EmployeeListComponent} from "./employee/employeelist";
+import {EditEmployeeComponent} from "./employee/editemployee.component";
+import {NewProjectComponent} from "./project/newproject.component";
+import {ProjectListComponent} from "./project/projectlist.component";
 
 @Component({
     selector: 'my-app',
@@ -33,7 +36,6 @@ import {EmployeeListComponent} from "./employee/employeelist";
         #myContainer{
             width:80%;
             margin-left:10%;
-            background-color:white;
             margin-top:0px;
         }
     `]
@@ -44,7 +46,10 @@ import {EmployeeListComponent} from "./employee/employeelist";
     {path:'/auth/logout',component:LogoutComponent},
     {path:'/user/profile',component:UserHomeComponent},
     {path:'/employee/new',component:NewEmployeeComponent},
-    {path:'/employee/list', component: EmployeeListComponent}
+    {path:'/employee/list', component: EmployeeListComponent},
+    {path: '/employee/edit', component: EditEmployeeComponent},
+    {path: '/project/new',component:NewProjectComponent},
+    {path: 'project/list', component:ProjectListComponent}
 ])
 export class AppComponent {
     
