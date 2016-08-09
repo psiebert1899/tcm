@@ -198,6 +198,7 @@ export class NewEmployeeComponent implements OnInit{
     managers:Employee[] = [];
     employees =[];
     projects = [];
+    selectedProjects=[];
     projectsManaged=[];
     selectedEmployees=[];
     constructor(private _fb:FormBuilder,private _employeeService:EmployeeService,private _projectService:ProjectService,private _errorService : ErrorService){}
@@ -248,12 +249,12 @@ export class NewEmployeeComponent implements OnInit{
                 for (var x = 0; x < projElement.options.length; x++) {
                     var option =<HTMLOptionElement>projElement.options[x];
                     if(option.selected){
-                        this.projects.push(option.value)
+                        this.selectedProjects.push(option.value)
                     }
-                    this.projects.push(projElement.selectedOptions[x]);
                 }
             }
         }
+        console.log(this.projects);
         if(this.myForm.value.canManageEmployees) {
             var empEle = <HTMLSelectElement>document.getElementById('employees');
             if(empEle !==null) {
