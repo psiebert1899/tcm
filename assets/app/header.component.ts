@@ -7,6 +7,7 @@ import {User} from "./auth/user";
 import {AuthenticationService} from "./auth/authentication.service";
 import {UserService} from "./user/user.service";
 import {ApplicationUser} from "./user/applicationuser";
+import {ErrorService} from "./errors/error.service";
 
 @Component({
     selector: 'my-header',
@@ -105,7 +106,7 @@ import {ApplicationUser} from "./user/applicationuser";
 export class HeaderComponent implements OnInit{
     public loggedUser : ApplicationUser;
     public myForm: ControlGroup;
-    constructor(private _authService:AuthenticationService, private _router :Router, private _userService : UserService){
+    constructor(private _authService:AuthenticationService, private _router :Router, private _userService : UserService, private _errorService:ErrorService){
       this.myForm = new ControlGroup({
           email: new Control(""),
           password: new Control("")

@@ -2,11 +2,12 @@ import {Http, Headers} from "@angular/http";
 import {Observable} from "rxjs/Rx";
 import {ApplicationUser} from "./applicationuser";
 import {AuthenticationService} from "../auth/authentication.service";
-import {Injectable} from "@angular/core";
+import {Injectable, EventEmitter} from "@angular/core";
 
 @Injectable()
 export class UserService{
     public user : ApplicationUser;
+    public broadcastUser = new EventEmitter<ApplicationUser>();
     constructor(private _http : Http, private _authService:AuthenticationService){}
     public getUser(){
         const headers = new Headers({'Content-Type' : 'application/json'});
@@ -16,6 +17,7 @@ export class UserService{
                 const data = response.json().obj;
                 console.log(data);
                 var appUser = new ApplicationUser(data.email, data.firstName, data.lastName,data.image,data.userId,null,null);
+                this.broadcastUser.emit(appUser);
                 this.user= appUser;
                 return appUser;
             }
