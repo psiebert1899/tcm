@@ -6,6 +6,7 @@ import {AccordionComponent} from "../utility/accordion.component";
 import {Project} from "./project";
 import {EmployeeService} from "../employee/employee.service";
 import {Query} from "../utility/query";
+import {Router} from "@angular/router";
 @Component({
     selector : 'my-new-project',
     template:`
@@ -51,7 +52,7 @@ import {Query} from "../utility/query";
 export class NewProjectComponent implements OnInit{
     myForm:ControlGroup;
     managers = [];
-    constructor(private _fb:FormBuilder,private projectService:ProjectService,private _employeeService:EmployeeService){}
+    constructor(private _fb:FormBuilder,private projectService:ProjectService,private _employeeService:EmployeeService,private _router:Router){}
     ngOnInit(){
         this.myForm=this._fb.group({
             organization:['',Validators.required],
@@ -67,7 +68,7 @@ export class NewProjectComponent implements OnInit{
     onSubmit(){
         var project= new Project(this.myForm.value.organization,this.myForm.value.name,this.myForm.value.image,this.myForm.value.manager);
         this.projectService.newProject(project).subscribe(
-            data => console.log(data),
+            data => this._router.navigateByUrl('/project/list'),
             error => console.log(error)
         )
     }

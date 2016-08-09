@@ -8,6 +8,7 @@ import {Employee} from "./employee";
 import {Query} from "../utility/query";
 import {ProjectService} from "../project/project.service";
 import {Project} from "../project/project";
+import {Router} from "@angular/router";
 @Component({
     selector: "my-new-employee",
     template:`
@@ -201,7 +202,7 @@ export class NewEmployeeComponent implements OnInit{
     selectedProjects=[];
     projectsManaged=[];
     selectedEmployees=[];
-    constructor(private _fb:FormBuilder,private _employeeService:EmployeeService,private _projectService:ProjectService,private _errorService : ErrorService){}
+    constructor(private _fb:FormBuilder,private _employeeService:EmployeeService,private _projectService:ProjectService,private _router:Router,private _errorService : ErrorService){}
     ngOnInit(){
         this._employeeService.getEmployees(new Query('canManageEmployees',true)).subscribe(
             response => this.managers=response,
@@ -288,7 +289,7 @@ export class NewEmployeeComponent implements OnInit{
             
         );
         this._employeeService.createUser(employee).subscribe(
-            data => console.log(data),
+            data => this._router.navigateByUrl('/employee/list'),
             error => console.log(error)
         )
     }

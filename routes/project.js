@@ -38,11 +38,11 @@ router.post('/',function(req,res,next){
                 title:'An error occurred',
                 error: err
             })
-            res.status(200).json({
-                title:'Success',
-                obj:result
-            })
         }
+        res.status(200).json({
+            title:'Success',
+            obj:result
+        })
     })
 });
 module.exports = router;
