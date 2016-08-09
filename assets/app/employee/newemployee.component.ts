@@ -253,7 +253,6 @@ export class NewEmployeeComponent implements OnInit{
     }
     onCountryChange(val){
         this.country=val;
-        console.log(val);
     }
     onSubmit(){
         if(this.myForm.value.canManageProjects) {

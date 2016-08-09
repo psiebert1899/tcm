@@ -20,7 +20,7 @@ import {Employee} from "./employee";
                 </div>
                 <div class="col-md-4 col-md-offset-1">
                     <ul class="list-group" id="mylist">
-                        <li class="list-group-item" id="top">Title: <span class="badge">{{employee?.title}}</span></li>
+                        <li class="list-group-item" id="top">Title: <span class="badge">{{title}}</span></li>
                         <li class="list-group-item" *ngIf="employee?.hasManager">Manager:<a href="#" class="badge">{{manager}}</a></li>
                         <li class="list-group-item" *ngIf="employee?.canManageEmployees">Employees: <span class="badge">{{employeeCount}}</span></li>
                         <li class="list-group-item">Projects: <span class="badge">{{projectCount}}</span></li>
@@ -93,6 +93,5 @@ export class EmployeeBasicDetailsComponent implements OnInit{
             }
 
         )
-        console.log(this.employee);
     }
 }
