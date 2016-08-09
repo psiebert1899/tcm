@@ -10,6 +10,7 @@ var employeeRoutes=require('./routes/employee');
 var appRoutes = require('./routes/app');
 var userRoutes =require('./routes/authentication');
 var appUserRoutes = require('./routes/users');
+var projectRoutes = require('./routes/project')
 
 var app = express();
 mongoose.connect('localhost:27017/tcm');
@@ -33,6 +34,7 @@ app.use(function(req, res, next) {
 });
 app.use('/employee',employeeRoutes);
 app.use('/appUser',appUserRoutes);
+app.use('/project',projectRoutes);
 app.use('/user',userRoutes);
 app.use('/', appRoutes);
 
