@@ -20,10 +20,10 @@ import {Employee} from "./employee";
                 </div>
                 <div class="col-md-4 col-md-offset-1">
                     <ul class="list-group" id="mylist">
-                        <li class="list-group-item" id="top">Title: <span class="badge">{{employee?.title}}</span></li>
-                        <li class="list-group-item" *ngIf="employee?.hasManager">Manager:<a href="#" class="badge">{{employee?.manager}}</a></li>
-                        <li class="list-group-item" *ngIf="employee?.canManageEmployees">Employees: <span class="badge">{{employee?.employees}}</span></li>
-                        <li class="list-group-item">Projects: <span class="badge">{{employee?.projects}}</span></li>
+                        <li class="list-group-item" id="top">Title: <span class="badge">{{title}}</span></li>
+                        <li class="list-group-item" *ngIf="employee?.hasManager">Manager:<a href="#" class="badge">{{manager}}</a></li>
+                        <li class="list-group-item" *ngIf="employee?.canManageEmployees">Employees: <span class="badge">{{employeeCount}}</span></li>
+                        <li class="list-group-item">Projects: <span class="badge">{{projectCount}}</span></li>
                         <li class="list-group-item" id="bottom">Avaliability: <span class="badge">0%</span></li>
                     </ul>
                 </div>
@@ -77,12 +77,21 @@ import {Employee} from "./employee";
 })
 export class EmployeeBasicDetailsComponent implements OnInit{
     employee:Employee;
+    projectCount;
+    employeeCount;
+    manager;
+    title;
     constructor(private _employeeService: EmployeeService){};
     ngOnInit(){
-        this._employeeService.selectedEmployeeChanged.subscribe(
+        this._employeeService.popEmployee.subscribe(
             data => {
                 this.employee = data;
+                this.projectCount=data.projects.length;
+                this.employeeCount=data.employees.length;
+                this.manager=data.manager;
+                this.title=data.title;
             }
+
         )
     }
 }

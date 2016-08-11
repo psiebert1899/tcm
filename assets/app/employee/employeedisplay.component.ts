@@ -28,7 +28,6 @@ export class EmployeeDisplayComponent{
     constructor(private _employeeService: EmployeeService,private errorService: ErrorService){
     }
     employeeClicked(){
-        console.log("clicked");
         this._employeeService.selectEmployee(this.employee);
         this._employeeService.popEmployeeDetails(this.employee);
     }

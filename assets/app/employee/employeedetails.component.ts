@@ -69,11 +69,6 @@ export class EmployeeDetailsComponent implements OnInit{
                 this.employeeDisplay='block';
             }
         )
-        this._employeeService.selectedEmployeeChanged.subscribe(
-            data => {
-                this.employeeData = data;
-            }
-        )
     }
     onEmployeeClosed(){
         this.employeeDisplay='none';
