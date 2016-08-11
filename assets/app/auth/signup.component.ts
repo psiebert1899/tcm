@@ -7,6 +7,12 @@ import {User} from "./user";
     selector : 'my-signup',
     template:`
         <section class="col-md-8 col-md-offset-2">
+
+            <div>
+                
+                <button id="register" class="btn btn-primary" width="120" height="60">Register Now</button>
+            </div>
+
             <form [ngFormModel]="myForm" (ngSubmit)="onSubmit()">
                 <div class="form-group">
                     <label for="firstName">First Name:</label>
@@ -28,6 +34,7 @@ import {User} from "./user";
             </form>
         </section>
     `
+
 })
 export class SignupComponent implements OnInit{
     myForm:ControlGroup;

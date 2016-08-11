@@ -42,7 +42,7 @@ import {ProjectListComponent} from "./project/projectlist.component";
 })
 @Routes([
     {path:"/auth/signin",component:SigninComponent},
-    {path:"/auth/signup",component:SignupComponent},
+    {path:"/",component:SignupComponent},
     {path:'/auth/logout',component:LogoutComponent},
     {path:'/user/profile',component:UserHomeComponent},
     {path:'/employee/new',component:NewEmployeeComponent},
