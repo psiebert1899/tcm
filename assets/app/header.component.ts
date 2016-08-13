@@ -2,7 +2,6 @@ import {Component, OnInit} from "@angular/core";
 import {ControlGroup, FormBuilder, Validators, Control} from "@angular/common";
 import {Router} from "@angular/router";
 import {ROUTER_DIRECTIVES, Routes} from "@angular/router";
-
 import {User} from "./auth/user";
 import {AuthenticationService} from "./auth/authentication.service";
 import {UserService} from "./user/user.service";
@@ -74,7 +73,7 @@ import {ErrorService} from "./errors/error.service";
                               <button type="submit" class="btn btn-primary">Sign in</button>                            
                           </form>
                         </li>
-                        <li><a [routerLink]="['/auth/signup']" *ngIf="!isLoggedIn()">Sign Up</a></li>
+                        
                         <li><a [routerLink]="['auth/logout']" *ngIf="isLoggedIn()">Sign Out</a></li>
                       </ul>
                     </div><!-- /.navbar-collapse -->
@@ -106,12 +105,7 @@ import {ErrorService} from "./errors/error.service";
 export class HeaderComponent implements OnInit{
     public loggedUser : ApplicationUser;
     public myForm: ControlGroup;
-    constructor(private _authService:AuthenticationService, private _router :Router, private _userService : UserService, private _errorService:ErrorService){
-      this.myForm = new ControlGroup({
-          email: new Control(""),
-          password: new Control("")
-      });
-    }
+    constructor(private _fb:FormBuilder, private _authService:AuthenticationService, private _router :Router, private _userService : UserService, private _errorService:ErrorService){}
 
     isLoggedIn(){
         return this._authService.isLoggedIn();
@@ -130,6 +124,14 @@ export class HeaderComponent implements OnInit{
             data=>this.loggedUser=data,
             error => console.log(error)
         )
+
+        this.myForm = this._fb.group({
+          email: ['', Validators.compose([
+            Validators.required,
+            this.isEmail
+          ])]
+          password: ['', Validators.required]
+        });
     }
     onSubmit(){
       
@@ -151,6 +153,12 @@ export class HeaderComponent implements OnInit{
     getUserName(){
         console.log(this._userService.user);
         return this._userService.user.firstName + " " + this._userService.user.lastName;
+    }
+
+    private isEmail(control : Control): {[s:string]:boolean}{
+        if(!control.value.match("[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?")){
+            return {invalidMail:true}
+        }
     }
 
 }
