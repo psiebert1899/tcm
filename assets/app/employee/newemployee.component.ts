@@ -9,6 +9,8 @@ import {Query} from "../utility/query";
 import {ProjectService} from "../project/project.service";
 import {Project} from "../project/project";
 import {Router} from "@angular/router";
+import {Skill} from "../skills/skill";
+import {Training} from "../training/training";
 @Component({
     selector: "my-new-employee",
     template:`
@@ -151,11 +153,122 @@ import {Router} from "@angular/router";
                             </select>
                         </div>
                 </accordion-group>
-                <accordion-group heading="Resume (optional)"><h1>Resume Upload Capability & skills section</h1></accordion-group>
-                <accordion-group heading="Training (optional)"><h1>Training and Info</h1></accordion-group>
-                <accordion-group heading="Benefits (optional)"><h1>Benefits information</h1></accordion-group>
+                <accordion-group heading="Resume (optional)">
+                    <div class="left-form">
+                        <label for="resume">Upload Resume</label>
+                        <div class="well ">
+                        <label for="path">File Name:</label>
+                            <input type="text" value="resume path"  class="form-control" disabled/>
+                            <label class="btn btn-default btn-file">
+                                Browse <input type="file" style="display: none;">
+                            </label> 
+                        </div>
+                    </div>
+                    <div class="right-form">
+                    <label for="newSkill">New Skill</label>
+                        <div class="well">
+                        <label for="newSkill">Skill Name</label>
+                            <input type="text" id="newSkill" name="newSkill" class="form-control"/>
+                            <button type="button" class="btn btn-default add-btn">Add</button>
+                        </div>
+                    </div>
+                    <div class="uneven-col-one">
+                        <div class="form-group">
+                            <label for="addSkill">Skill Name:</label>
+                            <select name="addSkill" id="addSkill" class="form-control">
+                                <option value="C#">C#</option>
+                                <option value="TeamCenter">TeamCenter</option>
+                                <option value="SimaticIT">Simatic IT</option>
+                            </select>
+                            <label for="skillLevel" id="skillLevelLabel">Skill Level</label>
+                            <select name="skillLevel" id="skillLevel" class="form-control">
+                                <option value="Beginner">Beginner</option>
+                                <option value="Intermediate">Intermediate</option>
+                                <option value="Advanced">Advanced</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="uneven-col-two">
+                        <button type="button" class="btn btn default center-block" id="addButton"(click)="addEmployeeSkill()">&gt;&gt;&gt;</button>
+                    </div>
+                    <div class="uneven-col-three">
+                        <div class="form-group">
+                            <label for="addedSkills">Employee Skills:</label>
+                            <div class="table-wrapper">
+                                <table class="table-striped" id="skills-table">
+                                    <tr>
+                                        <th>Skill Name</th>
+                                        <th>Skill Level</th>
+                                        <th>Remove</th>
+                                    </tr>
+                                    <tr *ngFor="let s of skills">
+                                        <td>{{s.name}}</td>
+                                        <td>{{s.level}}</td>
+                                        <td><button type="button" (click)="removeSkill(s)">X</button></td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                        <!--Make a single input allowing the user to select a skill-->
+                        <!--Make a corresponding level input, allowing the user to select the level of the skill-->
+                        <!--Make an add button, allowing the user to add the skill to the list-->
+                        <!--display the list of currently added skills, with a button that allows the editing or deleting of a particular skill-->
+                </accordion-group>
+                <accordion-group heading="Training (optional)">
+                    <!--Allow for uploading of training docs-->
+                    <!--Make an input for date of training-->
+                    <!--Make an input for length of training-->
+                    <!--Make an input for name of training-->
+                    <div class="left-form">
+                        <div class="left-form">
+                            <div class="form-group">
+                                <label for="subject">Subject:</label>
+                                <input type="text" id="subject" name="subject" class="form-control"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="training-organization">Organization:</label>
+                                <input type="text" id="training-organization" name="training-organization" class="form-control"/>
+                        </div>
+                    </div>
+                    <div class="right-form">
+                        <div class="form-group">
+                            <label for="training-days">Length:</label>
+                            <input type="number" id="training-days" name="training-days" class="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="training-date">Date:</label>
+                            <input type="date" id="training-date" name="training-date" class="form-control" />
+                        </div>
+                    </div>
+                        <button type="button" class="btn btn-default btn-lg center-block" (click)="addTraining()">Add</button>
+                    </div>
+                    <div class="right-form">
+                         <div class="form-group">
+                            <label for="addedTraining">Trainings:</label>
+                            <div class="table-wrapper">
+                            <table id="training-table" class="table-striped">
+                            <tr>
+                                <th>Subject</th>
+                                <th>Organization</th>
+                                <th>Length</th>
+                                <th>Date</th>
+                                <th>Delete</th>
+                            </tr>
+                                <tr *ngFor="let t of trainings">
+                                    <td>{{t.subject}}</td>
+                                    <td>{{t.organization}}</td>
+                                    <td>{{t.length}}</td>
+                                    <td>{{t.date.getYear()}}</td>
+                                    <td><button type="button" (click)="removeTraining(t)">X</button></td>
+                                </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </accordion-group>                
             </accordion>
-            <button type="submit" class="btn btn-primary btn-lg center-block">Submit</button>
+            <button type="submit" class="btn btn-primary btn-lg center-block submit-button">Submit</button>
         </form>
         </div>
     `,
@@ -165,10 +278,12 @@ import {Router} from "@angular/router";
         .left-form{
             float:left;
             width:49%;
+            margin-bottom:25px;
         }
         .right-form{
             float:right;
             width:49%;
+            margin-bottom:25px;
         }
         .col-one{
             float:left;
@@ -188,7 +303,7 @@ import {Router} from "@angular/router";
             color:white;
             font-family:OpenSans;
         }
-        .btn{
+        .submit-button{
             width:100%;
             border-radius:0;
             border-bottom-left-radius: 5px;
@@ -199,6 +314,63 @@ import {Router} from "@angular/router";
             border-radius:5px;
             padding:0;
 
+        }
+        .my-well{
+            height:8.5em;
+            overflow: scroll;
+            background-color:white;
+            padding:0;
+        }
+        .btn{
+        margin-top:2em;
+        }
+        .btn-file{
+            width:40%;
+            margin-left:30%;
+        }
+        .add-btn{
+            width:40%;
+            margin-left:30%;
+        }
+        .uneven-col-one{
+            width:40%;
+            float:left;
+        }
+        .uneven-col-two{
+            width:10%;
+            float:left;
+        }
+        .uneven-col-three{
+            width:50%;
+            float:left;
+        }
+        #skillLevelLabel{
+            margin-top:2em;
+        }
+        #addButton{
+            margin-top:4.25em
+        }
+        #training-table{
+            width:100%;
+            padding:0;
+        }
+        #training-table > th{
+            text-align:center;
+        }
+        th{
+            text-align:center;
+        }
+        #skills-table{
+            width:100%;
+        }
+        td{
+            text-align:center;
+        }
+        .table-wrapper{
+            height:10em;
+            overflow:auto;
+                        border:1px solid black;
+            border-radius:5px;
         }
     `]
 })
@@ -214,6 +386,8 @@ export class NewEmployeeComponent implements OnInit{
     selectedProjects=[];
     projectsManaged=[];
     selectedEmployees=[];
+    skills =[];
+    trainings=[];
     constructor(private _fb:FormBuilder,private _employeeService:EmployeeService,private _projectService:ProjectService,private _router:Router,private _errorService : ErrorService){}
     ngOnInit(){
         this._employeeService.getEmployees(new Query('canManageEmployees',true)).subscribe(
@@ -324,9 +498,62 @@ export class NewEmployeeComponent implements OnInit{
             this.hasManager=value;
         }
     }
+    addEmployeeSkill(){
+        var nameElement = <HTMLSelectElement>document.getElementById('addSkill');
+        var optElem=<HTMLOptionElement>nameElement.selectedOptions[0];
+        var name=optElem.value;
+        var levelElement=<HTMLSelectElement>document.getElementById('skillLevel');
+        var skillOpt = <HTMLOptionElement>levelElement.selectedOptions[0];
+        var level=skillOpt.value;
+        var skill=new Skill(name,level);
+        this.skills.push(skill);
+        console.log(this.skills);
+    }
     private isEmail(control : Control): {[s:string]:boolean}{
         if(!control.value.match("[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?")){
             return {invalidMail:true}
+        }
+    }
+    addTraining(){
+        /*get the fields*/
+        let subjectEle= <HTMLInputElement>document.getElementById('subject');
+        let orgEle = <HTMLInputElement>document.getElementById('training-organization');
+        let lengthEle = <HTMLInputElement>document.getElementById('training-days');
+        let dateEle = <HTMLInputElement>document.getElementById('training-date');
+
+        /*get the values*/
+        let subject=subjectEle.value;
+        console.log("Subject:"+subject);
+        let org = orgEle.value;
+        let length=lengthEle.value;
+        let date = new Date(dateEle.value);
+
+        //create the training object
+        let training=new Training(subject,org,parseInt(length),date);
+
+        //add training to the array
+        this.trainings.push(training);
+
+        //clear form values
+        subjectEle.value="";
+        orgEle.value="";
+        lengthEle.value="";
+        dateEle.value="";
+    }
+    removeTraining(ele){
+        console.log(ele);
+        for(let x=0;x<this.trainings.length;x++){
+            if(ele===this.trainings[x]){
+                this.trainings.splice(x,1);
+            }
+        }
+    }
+    removeSkill(ele){
+        console.log(ele);
+        for(let x=0;x<this.skills.length;x++){
+            if(ele==this.skills[x]){
+                this.skills.splice(x,1);
+            }
         }
     }
 
