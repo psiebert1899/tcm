@@ -83,6 +83,12 @@ export class EmployeeBasicDetailsComponent implements OnInit{
     title;
     constructor(private _employeeService: EmployeeService){};
     ngOnInit(){
+        this.employee=this._employeeService.selectedEmployee;
+        console.log(this.employee);
+        this.projectCount=this.employee.projects.length;
+        this.employeeCount=this.employee.employees.length;
+        this.manager=this.employee.manager;
+        this.title=this.employee.title;
         this._employeeService.popEmployee.subscribe(
             data => {
                 this.employee = data;

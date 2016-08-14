@@ -7,6 +7,7 @@ import {Query} from "../utility/query";
 export class EmployeeService{
     popEmployee=new EventEmitter<Employee>();
     selectedEmployeeChanged = new EventEmitter<Employee>();
+    selectedEmployee:Employee;
     constructor(private _http:Http){}
     employees : Employee[];
     createUser(employee:Employee){
@@ -74,5 +75,6 @@ export class EmployeeService{
     }
     selectEmployee(emp:Employee){
         this.selectedEmployeeChanged.emit(emp);
+        this.selectedEmployee=emp;
     }
 }
