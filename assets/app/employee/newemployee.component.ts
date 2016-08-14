@@ -491,7 +491,8 @@ export class NewEmployeeComponent implements OnInit{
         var level=skillOpt.value;
         var skill=new Skill(name,level);
         this.skills.push(skill);
-        console.log(this.skills);
+        nameElement.value="";
+        levelElement.selectedIndex=0;
     }
     private isEmail(control : Control): {[s:string]:boolean}{
         if(!control.value.match("[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?")){
@@ -539,9 +540,6 @@ export class NewEmployeeComponent implements OnInit{
                 this.skills.splice(x,1);
             }
         }
-    }
-    addSkillToList(){
-        
     }
 
 }
