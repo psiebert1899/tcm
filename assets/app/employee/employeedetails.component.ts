@@ -27,6 +27,7 @@ import {EditEmployeeComponent} from "./editemployee.component";
                         <li><a href="#">Notes</a></li>
                     </ul>
                         <router-outlet></router-outlet>
+                        <my-employee-basic-details></my-employee-basic-details>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" (click)="onEmployeeEdit()">Edit</button>
@@ -68,6 +69,11 @@ export class EmployeeDetailsComponent implements OnInit{
                 this.employeeData = data;
                 this.employeeDisplay='block';
             }
+
+        )
+        this._employeeService.selectedEmployeeChanged.subscribe(
+            data => this.employeeData=data,
+            error => console.log(error)
         )
     }
     onEmployeeClosed(){

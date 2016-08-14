@@ -10,32 +10,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var employee_1 = require("./employee");
-var employee_service_1 = require("./employee.service");
-var error_service_1 = require("../errors/error.service");
 var EmployeeDisplayComponent = (function () {
-    function EmployeeDisplayComponent(_employeeService, errorService) {
-        this._employeeService = _employeeService;
-        this.errorService = errorService;
-        this.expand = new core_1.EventEmitter();
+    function EmployeeDisplayComponent() {
     }
     __decorate([
         core_1.Input(), 
         __metadata('design:type', employee_1.Employee)
     ], EmployeeDisplayComponent.prototype, "employee", void 0);
-    __decorate([
-        core_1.Output(), 
-        __metadata('design:type', Object)
-    ], EmployeeDisplayComponent.prototype, "expand", void 0);
     EmployeeDisplayComponent = __decorate([
         core_1.Component({
             selector: 'my-employee-display',
             template: "\n        <div class=\"col-md-2\">\n            <div class=\"thumbnail\">\n                <img src=\"{{employee.image}}\" class=\"img img-responsive\"/>\n                <h3>{{employee.firstName + \" \" + employee.lastName}}</h3>\n                <h5>{{employee?.division +\",\"+employee?.department}}</h5>\n            </div>\n        </div>\n    ",
             styles: ["\n        h3{\n            text-align:center;\n        }\n        h5{\n            text-align:center;\n        }\n    "]
         }), 
-        __metadata('design:paramtypes', [employee_service_1.EmployeeService, error_service_1.ErrorService])
+        __metadata('design:paramtypes', [])
     ], EmployeeDisplayComponent);
     return EmployeeDisplayComponent;
 }());
 exports.EmployeeDisplayComponent = EmployeeDisplayComponent;
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImVtcGxveWVlL2VtcGxveWVlZGlzcGxheS5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7OztBQUFBLHFCQUFxRCxlQUFlLENBQUMsQ0FBQTtBQUNyRSx5QkFBdUIsWUFBWSxDQUFDLENBQUE7QUFDcEMsaUNBQThCLG9CQUFvQixDQUFDLENBQUE7QUFDbkQsOEJBQTJCLHlCQUF5QixDQUFDLENBQUE7QUFxQnJEO0lBR0ksa0NBQW9CLGdCQUFpQyxFQUFTLFlBQTBCO1FBQXBFLHFCQUFnQixHQUFoQixnQkFBZ0IsQ0FBaUI7UUFBUyxpQkFBWSxHQUFaLFlBQVksQ0FBYztRQUQ5RSxXQUFNLEdBQUcsSUFBSSxtQkFBWSxFQUFZLENBQUM7SUFFaEQsQ0FBQztJQUhMO1FBQUMsWUFBSyxFQUFFOzs4REFBQTtJQUNKO1FBQUMsYUFBTSxFQUFFOzs0REFBQTtJQXRCYjtRQUFDLGdCQUFTLENBQUM7WUFDUCxRQUFRLEVBQUUscUJBQXFCO1lBQy9CLFFBQVEsRUFBQywrVkFRUjtZQUNELE1BQU0sRUFBQyxDQUFDLHdIQU9QLENBQUM7U0FDTCxDQUFDOztnQ0FBQTtJQU1GLCtCQUFDO0FBQUQsQ0FMQSxBQUtDLElBQUE7QUFMWSxnQ0FBd0IsMkJBS3BDLENBQUEiLCJmaWxlIjoiZW1wbG95ZWUvZW1wbG95ZWVkaXNwbGF5LmNvbXBvbmVudC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7Q29tcG9uZW50LCBJbnB1dCwgRXZlbnRFbWl0dGVyLCBPdXRwdXR9IGZyb20gXCJAYW5ndWxhci9jb3JlXCI7XHJcbmltcG9ydCB7RW1wbG95ZWV9IGZyb20gXCIuL2VtcGxveWVlXCI7XHJcbmltcG9ydCB7RW1wbG95ZWVTZXJ2aWNlfSBmcm9tIFwiLi9lbXBsb3llZS5zZXJ2aWNlXCI7XHJcbmltcG9ydCB7RXJyb3JTZXJ2aWNlfSBmcm9tIFwiLi4vZXJyb3JzL2Vycm9yLnNlcnZpY2VcIjtcclxuQENvbXBvbmVudCh7XHJcbiAgICBzZWxlY3RvcjogJ215LWVtcGxveWVlLWRpc3BsYXknLFxyXG4gICAgdGVtcGxhdGU6YFxyXG4gICAgICAgIDxkaXYgY2xhc3M9XCJjb2wtbWQtMlwiPlxyXG4gICAgICAgICAgICA8ZGl2IGNsYXNzPVwidGh1bWJuYWlsXCI+XHJcbiAgICAgICAgICAgICAgICA8aW1nIHNyYz1cInt7ZW1wbG95ZWUuaW1hZ2V9fVwiIGNsYXNzPVwiaW1nIGltZy1yZXNwb25zaXZlXCIvPlxyXG4gICAgICAgICAgICAgICAgPGgzPnt7ZW1wbG95ZWUuZmlyc3ROYW1lICsgXCIgXCIgKyBlbXBsb3llZS5sYXN0TmFtZX19PC9oMz5cclxuICAgICAgICAgICAgICAgIDxoNT57e2VtcGxveWVlPy5kaXZpc2lvbiArXCIsXCIrZW1wbG95ZWU/LmRlcGFydG1lbnR9fTwvaDU+XHJcbiAgICAgICAgICAgIDwvZGl2PlxyXG4gICAgICAgIDwvZGl2PlxyXG4gICAgYCxcclxuICAgIHN0eWxlczpbYFxyXG4gICAgICAgIGgze1xyXG4gICAgICAgICAgICB0ZXh0LWFsaWduOmNlbnRlcjtcclxuICAgICAgICB9XHJcbiAgICAgICAgaDV7XHJcbiAgICAgICAgICAgIHRleHQtYWxpZ246Y2VudGVyO1xyXG4gICAgICAgIH1cclxuICAgIGBdXHJcbn0pXHJcbmV4cG9ydCBjbGFzcyBFbXBsb3llZURpc3BsYXlDb21wb25lbnR7XHJcbkBJbnB1dCgpIGVtcGxveWVlOiBFbXBsb3llZTtcclxuICAgIEBPdXRwdXQoKSBleHBhbmQgPSBuZXcgRXZlbnRFbWl0dGVyPEVtcGxveWVlPigpO1xyXG4gICAgY29uc3RydWN0b3IocHJpdmF0ZSBfZW1wbG95ZWVTZXJ2aWNlOiBFbXBsb3llZVNlcnZpY2UscHJpdmF0ZSBlcnJvclNlcnZpY2U6IEVycm9yU2VydmljZSl7XHJcbiAgICB9XHJcbn0iXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImVtcGxveWVlL2VtcGxveWVlZGlzcGxheS5jb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7OztBQUFBLHFCQUFxRCxlQUFlLENBQUMsQ0FBQTtBQUNyRSx5QkFBdUIsWUFBWSxDQUFDLENBQUE7QUF1QnBDO0lBRUk7SUFDQSxDQUFDO0lBRkw7UUFBQyxZQUFLLEVBQUU7OzhEQUFBO0lBckJSO1FBQUMsZ0JBQVMsQ0FBQztZQUNQLFFBQVEsRUFBRSxxQkFBcUI7WUFDL0IsUUFBUSxFQUFDLCtWQVFSO1lBQ0QsTUFBTSxFQUFDLENBQUMsd0hBT1AsQ0FBQztTQUNMLENBQUM7O2dDQUFBO0lBS0YsK0JBQUM7QUFBRCxDQUpBLEFBSUMsSUFBQTtBQUpZLGdDQUF3QiwyQkFJcEMsQ0FBQSIsImZpbGUiOiJlbXBsb3llZS9lbXBsb3llZWRpc3BsYXkuY29tcG9uZW50LmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtDb21wb25lbnQsIElucHV0LCBFdmVudEVtaXR0ZXIsIE91dHB1dH0gZnJvbSBcIkBhbmd1bGFyL2NvcmVcIjtcclxuaW1wb3J0IHtFbXBsb3llZX0gZnJvbSBcIi4vZW1wbG95ZWVcIjtcclxuaW1wb3J0IHtFbXBsb3llZVNlcnZpY2V9IGZyb20gXCIuL2VtcGxveWVlLnNlcnZpY2VcIjtcclxuaW1wb3J0IHtFcnJvclNlcnZpY2V9IGZyb20gXCIuLi9lcnJvcnMvZXJyb3Iuc2VydmljZVwiO1xyXG5AQ29tcG9uZW50KHtcclxuICAgIHNlbGVjdG9yOiAnbXktZW1wbG95ZWUtZGlzcGxheScsXHJcbiAgICB0ZW1wbGF0ZTpgXHJcbiAgICAgICAgPGRpdiBjbGFzcz1cImNvbC1tZC0yXCI+XHJcbiAgICAgICAgICAgIDxkaXYgY2xhc3M9XCJ0aHVtYm5haWxcIj5cclxuICAgICAgICAgICAgICAgIDxpbWcgc3JjPVwie3tlbXBsb3llZS5pbWFnZX19XCIgY2xhc3M9XCJpbWcgaW1nLXJlc3BvbnNpdmVcIi8+XHJcbiAgICAgICAgICAgICAgICA8aDM+e3tlbXBsb3llZS5maXJzdE5hbWUgKyBcIiBcIiArIGVtcGxveWVlLmxhc3ROYW1lfX08L2gzPlxyXG4gICAgICAgICAgICAgICAgPGg1Pnt7ZW1wbG95ZWU/LmRpdmlzaW9uICtcIixcIitlbXBsb3llZT8uZGVwYXJ0bWVudH19PC9oNT5cclxuICAgICAgICAgICAgPC9kaXY+XHJcbiAgICAgICAgPC9kaXY+XHJcbiAgICBgLFxyXG4gICAgc3R5bGVzOltgXHJcbiAgICAgICAgaDN7XHJcbiAgICAgICAgICAgIHRleHQtYWxpZ246Y2VudGVyO1xyXG4gICAgICAgIH1cclxuICAgICAgICBoNXtcclxuICAgICAgICAgICAgdGV4dC1hbGlnbjpjZW50ZXI7XHJcbiAgICAgICAgfVxyXG4gICAgYF1cclxufSlcclxuZXhwb3J0IGNsYXNzIEVtcGxveWVlRGlzcGxheUNvbXBvbmVudHtcclxuQElucHV0KCkgZW1wbG95ZWU6IEVtcGxveWVlO1xyXG4gICAgY29uc3RydWN0b3IoKXtcclxuICAgIH1cclxufSJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ==

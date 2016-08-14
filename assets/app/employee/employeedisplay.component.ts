@@ -24,7 +24,6 @@ import {ErrorService} from "../errors/error.service";
 })
 export class EmployeeDisplayComponent{
 @Input() employee: Employee;
-    @Output() expand = new EventEmitter<Employee>();
-    constructor(private _employeeService: EmployeeService,private errorService: ErrorService){
+    constructor(){
     }
 }
