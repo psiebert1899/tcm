@@ -35,9 +35,6 @@ router.get("/", function(req,res,next){
 })
 
 router.post("/",function(req,res,next){
-    console.log("projects");
-    console.log(req.body.projects);
-    console.log("end projects");
     var employee = new Employee({
         email: req.body.email,
         firstName: req.body.firstName,
@@ -55,7 +52,9 @@ router.post("/",function(req,res,next){
         canManageEmployees:req.body.canManageEmployees,
         canManageProjects:req.body.canManageProjects,
         hasManager:req.body.hasManager,
-        projectManagerFor:req.body.projectManagerFor
+        projectManagerFor:req.body.projectManagerFor,
+        trainings:req.body.trainings,
+        skills:req.body.skills
     })
     employee.save(function(err,result){
         if(err){

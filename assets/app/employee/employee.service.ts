@@ -48,10 +48,20 @@ export class EmployeeService{
                     for(let k= 0; k<data[i].projects.length;k++){
                         employee.projects.push(data[i].projects[k]);
                     }
+                    employee.skills=[];
+                    for(let l = 0; l<data[i].skills.length;l++){
+                        employee.skills.push(data[i].skills[l]);
+                    }
+                    employee.trainings=[];
+                    for(let l = 0; l<data[i].skills.length;l++){
+                        employee.trainings.push(data[i].trainings[l]);
+                    }
                     employee._id=data[i]._id;
                     employee.canManageEmployees=data[i].canManageEmployees;
                     employee.canManageProjects=data[i].canManageProjects;
                     employee.hasManager=data[i].hasManager;
+                    employee.trainings=data[i].trainings;
+                        employee.skills=data[i].skills;
                     emps.push(employee);
                 }
                 return emps

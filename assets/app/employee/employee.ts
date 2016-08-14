@@ -1,3 +1,5 @@
+import {Skill} from "../skills/skill";
+import {Training} from "../training/training";
 export class Employee{
     constructor(
     public email:string,
@@ -18,6 +20,8 @@ export class Employee{
     public canManageProjects ?: boolean,
     public hasManager ?: boolean,
     public projectManagerFor ?: string[],
+    public trainings ?: Training[],
+    public skills ?: Skill[],
     public _id ?: string
     ){}
 }

@@ -154,32 +154,10 @@ import {Training} from "../training/training";
                         </div>
                 </accordion-group>
                 <accordion-group heading="Resume (optional)">
-                    <div class="left-form">
-                        <label for="resume">Upload Resume</label>
-                        <div class="well ">
-                        <label for="path">File Name:</label>
-                            <input type="text" value="resume path"  class="form-control" disabled/>
-                            <label class="btn btn-default btn-file">
-                                Browse <input type="file" style="display: none;">
-                            </label> 
-                        </div>
-                    </div>
-                    <div class="right-form">
-                    <label for="newSkill">New Skill</label>
-                        <div class="well">
-                        <label for="newSkill">Skill Name</label>
-                            <input type="text" id="newSkill" name="newSkill" class="form-control"/>
-                            <button type="button" class="btn btn-default add-btn">Add</button>
-                        </div>
-                    </div>
                     <div class="uneven-col-one">
                         <div class="form-group">
                             <label for="addSkill">Skill Name:</label>
-                            <select name="addSkill" id="addSkill" class="form-control">
-                                <option value="C#">C#</option>
-                                <option value="TeamCenter">TeamCenter</option>
-                                <option value="SimaticIT">Simatic IT</option>
-                            </select>
+                            <input type="text" name="addSkill" id="addSkill" class="form-control">
                             <label for="skillLevel" id="skillLevelLabel">Skill Level</label>
                             <select name="skillLevel" id="skillLevel" class="form-control">
                                 <option value="Beginner">Beginner</option>
@@ -210,10 +188,16 @@ import {Training} from "../training/training";
                             </div>
                         </div>
                     </div>
-                        <!--Make a single input allowing the user to select a skill-->
-                        <!--Make a corresponding level input, allowing the user to select the level of the skill-->
-                        <!--Make an add button, allowing the user to add the skill to the list-->
-                        <!--display the list of currently added skills, with a button that allows the editing or deleting of a particular skill-->
+                    <div class="left-form">
+                        <label for="resume">Upload Resume</label>
+                        <div class="well ">
+                        <label for="path">File Name:</label>
+                            <input type="text" value="resume path"  class="form-control" disabled/>
+                            <label class="btn btn-default btn-file">
+                                Browse <input type="file" style="display: none;">
+                            </label> 
+                        </div>
+                    </div>
                 </accordion-group>
                 <accordion-group heading="Training (optional)">
                     <!--Allow for uploading of training docs-->
@@ -479,7 +463,9 @@ export class NewEmployeeComponent implements OnInit{
             this.canManageEmployees,
             this.canManageProjects,
             this.hasManager,
-            this.projectsManaged
+            this.projectsManaged,
+            this.trainings,
+            this.skills
             
         );
         this._employeeService.createUser(employee).subscribe(
@@ -499,9 +485,8 @@ export class NewEmployeeComponent implements OnInit{
         }
     }
     addEmployeeSkill(){
-        var nameElement = <HTMLSelectElement>document.getElementById('addSkill');
-        var optElem=<HTMLOptionElement>nameElement.selectedOptions[0];
-        var name=optElem.value;
+        var nameElement = <HTMLInputElement> document.getElementById('addSkill');
+        var name=nameElement.value;
         var levelElement=<HTMLSelectElement>document.getElementById('skillLevel');
         var skillOpt = <HTMLOptionElement>levelElement.selectedOptions[0];
         var level=skillOpt.value;
@@ -555,6 +540,9 @@ export class NewEmployeeComponent implements OnInit{
                 this.skills.splice(x,1);
             }
         }
+    }
+    addSkillToList(){
+        
     }
 
 }

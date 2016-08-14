@@ -19,7 +19,14 @@ var schema = new Schema({
     hasManager:{type:Boolean, required:true , default:false},
     canManageEmployees: {type:Boolean,required: true,default:false},
     canManageProjects:{type:Boolean ,required:true,default:false},
-    projectManagerFor:[{type:Schema.Types.ObjectId,ref:'Project'}]
+    projectManagerFor:[{type:Schema.Types.ObjectId,ref:'Project'}],
+    trainings:[{
+        subject:String,
+        organization:String,
+        length:Number,
+        date:Date
+    }],
+    skills:[{name:String,level:String}]
 
 });
 
