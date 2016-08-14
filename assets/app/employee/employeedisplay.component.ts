@@ -5,7 +5,7 @@ import {ErrorService} from "../errors/error.service";
 @Component({
     selector: 'my-employee-display',
     template:`
-        <div class="col-md-2" (click)="employeeClicked()">
+        <div class="col-md-2">
             <div class="thumbnail">
                 <img src="{{employee.image}}" class="img img-responsive"/>
                 <h3>{{employee.firstName + " " + employee.lastName}}</h3>
@@ -26,9 +26,5 @@ export class EmployeeDisplayComponent{
 @Input() employee: Employee;
     @Output() expand = new EventEmitter<Employee>();
     constructor(private _employeeService: EmployeeService,private errorService: ErrorService){
-    }
-    employeeClicked(){
-        this._employeeService.selectEmployee(this.employee);
-        this._employeeService.popEmployeeDetails(this.employee);
     }
 }

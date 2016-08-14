@@ -305,12 +305,11 @@ import {Training} from "../training/training";
             background-color:white;
             padding:0;
         }
-        .btn{
-        margin-top:2em;
-        }
+
         .btn-file{
             width:40%;
             margin-left:30%;
+            margin-top:2em;
         }
         .add-btn{
             width:40%;

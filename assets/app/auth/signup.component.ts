@@ -16,4 +16,7 @@ import {SignupformComponent} from "./signupform.component";
     directives: [SignupformComponent]
 })
 export class SignupComponent implements OnInit{
+    ngOnInit(){
+        
+    }
 }

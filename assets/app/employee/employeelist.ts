@@ -13,7 +13,7 @@ import {Query} from "../utility/query";
         <h1>Employee List</h1>
         <section class="col-md-12" *ngIf="dataLoaded">
             <div class="container-fluid">
-                <my-employee-display *ngFor="let e of employees" [employee]="e"></my-employee-display>
+                <my-employee-display *ngFor="let e of employees" [employee]="e" (click)="setSelectedEmployee(e)"></my-employee-display>
             </div>
         </section>
         <my-employee-details></my-employee-details>
@@ -47,5 +47,9 @@ export class EmployeeListComponent implements OnInit{
             },
             error => console.log(error)
         )
+    }
+    setSelectedEmployee(emp:Employee){
+            this._employeeService.selectEmployee(emp);
+            this._employeeService.popEmployeeDetails(emp);
     }
 }

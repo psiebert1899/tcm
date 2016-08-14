@@ -129,7 +129,7 @@ export class HeaderComponent implements OnInit{
           email: ['', Validators.compose([
             Validators.required,
             this.isEmail
-          ])]
+          ])],
           password: ['', Validators.required]
         });
     }

@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from "@angular/core";
+import {Component, OnInit, ViewChild, ElementRef} from "@angular/core";
 import {ControlGroup, FormBuilder, Validators, Control} from "@angular/common";
 import {AuthenticationService} from "./authentication.service";
 import {ErrorService} from "../errors/error.service";
