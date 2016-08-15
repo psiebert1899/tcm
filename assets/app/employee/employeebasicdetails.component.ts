@@ -1,6 +1,8 @@
 import {Component, OnInit} from "@angular/core";
 import {EmployeeService} from "./employee.service";
 import {Employee} from "./employee";
+import {Router, Route, RouteSegment} from "@angular/router";
+import {Query} from "../utility/query";
 @Component({
     selector : 'my-employee-basic-details',
     template: `
@@ -81,14 +83,32 @@ export class EmployeeBasicDetailsComponent implements OnInit{
     employeeCount;
     manager;
     title;
-    constructor(private _employeeService: EmployeeService){};
+    _id;
+    constructor(private _employeeService: EmployeeService,private _router:Router){};
     ngOnInit(){
         this.employee=this._employeeService.selectedEmployee;
-        console.log(this.employee);
-        this.projectCount=this.employee.projects.length;
-        this.employeeCount=this.employee.employees.length;
-        this.manager=this.employee.manager;
-        this.title=this.employee.title;
+        if(this.employee==null || this.employee==undefined){
+            console.log(this._id);
+            this._employeeService.getEmployees(new Query('_id',this._id)).subscribe(
+                data => {
+                    console.log(data);
+                    this.employee=data[0];
+                    this._employeeService.popEmployee.emit(this.employee);
+                    this.projectCount = this.employee.projects.length;
+                    this.employeeCount = this.employee.employees.length;
+                    this.manager = this.employee.manager;
+                    this.title = this.employee.title;
+
+                },
+                error=>console.log(error)
+            )
+        }
+        else {
+            this.projectCount = this.employee.projects.length;
+            this.employeeCount = this.employee.employees.length;
+            this.manager = this.employee.manager;
+            this.title = this.employee.title;
+        }
         this._employeeService.popEmployee.subscribe(
             data => {
                 this.employee = data;
@@ -99,5 +119,9 @@ export class EmployeeBasicDetailsComponent implements OnInit{
             }
 
         )
+    }
+    routerOnActivate(curr: RouteSegment) {
+        console.log("router activated");
+        this._id=curr.getParam('id');
     }
 }

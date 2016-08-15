@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="bbb54cc8-ac9a-4ad7-9f11-82dafe82456e" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/app/employee/newemployee.component.ts" afterPath="$PROJECT_DIR$/assets/app/employee/newemployee.component.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app/employee/newemployee.component.js" afterPath="$PROJECT_DIR$/public/js/app/employee/newemployee.component.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/app/employee/employeebasicdetails.component.ts" afterPath="$PROJECT_DIR$/assets/app/employee/employeebasicdetails.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/app/employee/employeedetails.component.ts" afterPath="$PROJECT_DIR$/assets/app/employee/employeedetails.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app/employee/employeebasicdetails.component.js" afterPath="$PROJECT_DIR$/public/js/app/employee/employeebasicdetails.component.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app/employee/employeedetails.component.js" afterPath="$PROJECT_DIR$/public/js/app/employee/employeedetails.component.js" />
     </list>
     <ignored path="Latest Project Version.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,11 +27,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="newemployee.component.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="newemployee.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/app/employee/newemployee.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="707">
-              <caret line="485" column="23" selection-start-line="485" selection-start-column="23" selection-end-line="485" selection-end-column="23" />
+            <state relative-caret-position="705">
+              <caret line="485" column="22" selection-start-line="485" selection-start-column="22" selection-end-line="485" selection-end-column="22" />
               <folding>
                 <element signature="e#0#48#0" expanded="true" />
                 <element signature="n#!!block;n#ngOnInit#0;n#NewEmployeeComponent#0" expanded="false" />
@@ -38,6 +40,7 @@
                 <element signature="e#20582#21001#0" expanded="false" />
                 <element signature="n#!!block;n#handleRadioChange#0;n#NewEmployeeComponent#0" expanded="false" />
                 <element signature="e#22032#22086#0" expanded="false" />
+                <element signature="n#!!block;n#addEmployeeSkill#0;n#NewEmployeeComponent#0" expanded="false" />
                 <element signature="n#!!block#1;n#isEmail#0;n#NewEmployeeComponent#0" expanded="false" />
                 <element signature="e#23100#23149#0" expanded="false" />
                 <element signature="n#!!block;n#addTraining#0;n#NewEmployeeComponent#0" expanded="false" />
@@ -160,6 +163,88 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="employeedetails.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/app/employee/employeedetails.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="19" column="83" selection-start-line="19" selection-start-column="83" selection-end-line="19" selection-end-column="83" />
+              <folding>
+                <marker date="1471219507517" expanded="true" signature="589:2186" ph="..." />
+                <marker date="1471219507517" expanded="true" signature="647:2148" ph="..." />
+                <marker date="1471219507517" expanded="true" signature="712:2105" ph="..." />
+                <marker date="1471219507517" expanded="true" signature="760:1055" ph="..." />
+                <marker date="1471219507517" expanded="true" signature="1100:1783" ph="..." />
+                <marker date="1471219507517" expanded="true" signature="1146:1675" ph="..." />
+                <marker date="1471219507517" expanded="true" signature="1830:2082" ph="..." />
+                <marker date="1471219507517" expanded="true" signature="2246:2426" ph="{...}" />
+                <marker date="1471219507517" expanded="true" signature="2451:2514" ph="{...}" />
+                <marker date="1471219507517" expanded="true" signature="2537:2572" ph="{...}" />
+                <marker date="1471219507517" expanded="true" signature="2948:2950" ph="{...}" />
+                <marker date="1471219507517" expanded="true" signature="3427:3433" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="employeebasicdetails.component.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/assets/app/employee/employeebasicdetails.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="453">
+              <caret line="95" column="74" selection-start-line="95" selection-start-column="74" selection-end-line="95" selection-end-column="74" />
+              <folding>
+                <element signature="e#0#48#0" expanded="true" />
+                <marker date="1471221203149" expanded="true" signature="360:2195" ph="..." />
+                <marker date="1471221203149" expanded="true" signature="406:2172" ph="..." />
+                <marker date="1471221203149" expanded="true" signature="446:629" ph="..." />
+                <marker date="1471221203149" expanded="true" signature="490:606" ph="..." />
+                <marker date="1471221203149" expanded="true" signature="684:1373" ph="..." />
+                <marker date="1471221203149" expanded="true" signature="1428:2153" ph="..." />
+                <marker date="1471221203149" expanded="true" signature="1484:2130" ph="..." />
+                <marker date="1471221203149" expanded="true" signature="2234:2301" ph="{...}" />
+                <marker date="1471221203149" expanded="true" signature="2319:2349" ph="{...}" />
+                <marker date="1471221203149" expanded="true" signature="2371:2399" ph="{...}" />
+                <marker date="1471221203149" expanded="true" signature="2414:2453" ph="{...}" />
+                <marker date="1471221203149" expanded="true" signature="2469:2503" ph="{...}" />
+                <marker date="1471221203149" expanded="true" signature="2525:2558" ph="{...}" />
+                <marker date="1471221203149" expanded="true" signature="2568:2599" ph="{...}" />
+                <marker date="1471221203149" expanded="true" signature="2612:2642" ph="{...}" />
+                <marker date="1471221203149" expanded="true" signature="2650:2682" ph="{...}" />
+                <marker date="1471221203149" expanded="true" signature="2690:2722" ph="{...}" />
+                <marker date="1471221203149" expanded="true" signature="2738:2804" ph="{...}" />
+                <marker date="1471221203149" expanded="true" signature="2811:2876" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="employee.service.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/app/employee/employee.service.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-221">
+              <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+              <folding>
+                <marker date="1471202930819" expanded="true" signature="3272:3315" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="employeelist.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/assets/app/employee/employeelist.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="34" column="18" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="18" />
+              <folding>
+                <element signature="e#1028#1245#0" expanded="false" />
+                <marker date="1471219832955" expanded="true" signature="640:856" ph="..." />
+                <marker date="1471219832955" expanded="true" signature="682:837" ph="..." />
+                <marker date="1471219832955" expanded="true" signature="1041:1111" ph="{...}" />
+                <marker date="1471219832955" expanded="true" signature="1130:1238" ph="{...}" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
   </component>
   <component name="Git.Settings">
@@ -212,12 +297,12 @@
         <option value="$PROJECT_DIR$/assets/app/header.component.ts" />
         <option value="$PROJECT_DIR$/assets/app/auth/signup.component.ts" />
         <option value="$PROJECT_DIR$/assets/app/auth/signupform.component.ts" />
-        <option value="$PROJECT_DIR$/assets/app/employee/employeelist.ts" />
         <option value="$PROJECT_DIR$/assets/app/employee/employeedisplay.component.ts" />
-        <option value="$PROJECT_DIR$/assets/app/employee/employeedetails.component.ts" />
         <option value="$PROJECT_DIR$/assets/app/employee/employee.service.ts" />
-        <option value="$PROJECT_DIR$/assets/app/employee/employeebasicdetails.component.ts" />
         <option value="$PROJECT_DIR$/assets/app/employee/newemployee.component.ts" />
+        <option value="$PROJECT_DIR$/assets/app/employee/employeedetails.component.ts" />
+        <option value="$PROJECT_DIR$/assets/app/employee/employeelist.ts" />
+        <option value="$PROJECT_DIR$/assets/app/employee/employeebasicdetails.component.ts" />
       </list>
     </option>
   </component>
@@ -530,12 +615,12 @@
       <workItem from="1470437300012" duration="43629000" />
       <workItem from="1470802235662" duration="10842000" />
       <workItem from="1470976392227" duration="4583000" />
-      <workItem from="1471067566670" duration="18921000" />
+      <workItem from="1471067566670" duration="22135000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="170545000" />
+    <option name="totallyTimeSpent" value="173759000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1932" height="1047" extended-state="0" />
@@ -1003,17 +1088,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/app/employee/employee.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
-          <folding>
-            <marker date="1471202930819" expanded="false" signature="844:3109" ph="{...}" />
-            <marker date="1471202930819" expanded="true" signature="3272:3315" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/app/employee/employeedisplay.component.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -1027,73 +1101,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/app/employee/employeebasicdetails.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="708">
-          <caret line="91" column="0" selection-start-line="91" selection-start-column="0" selection-end-line="100" selection-end-column="9" />
-          <folding>
-            <marker date="1471203187226" expanded="true" signature="259:2094" ph="..." />
-            <marker date="1471203187226" expanded="true" signature="305:2071" ph="..." />
-            <marker date="1471203187226" expanded="true" signature="345:528" ph="..." />
-            <marker date="1471203187226" expanded="true" signature="389:505" ph="..." />
-            <marker date="1471203187226" expanded="true" signature="583:1272" ph="..." />
-            <marker date="1471203187226" expanded="true" signature="1327:2052" ph="..." />
-            <marker date="1471203187226" expanded="true" signature="1383:2029" ph="..." />
-            <marker date="1471203187226" expanded="true" signature="2133:2200" ph="{...}" />
-            <marker date="1471203187226" expanded="true" signature="2218:2248" ph="{...}" />
-            <marker date="1471203187226" expanded="true" signature="2270:2298" ph="{...}" />
-            <marker date="1471203187226" expanded="true" signature="2313:2352" ph="{...}" />
-            <marker date="1471203187226" expanded="true" signature="2368:2402" ph="{...}" />
-            <marker date="1471203187226" expanded="true" signature="2424:2457" ph="{...}" />
-            <marker date="1471203187226" expanded="true" signature="2467:2498" ph="{...}" />
-            <marker date="1471203187226" expanded="true" signature="2511:2541" ph="{...}" />
-            <marker date="1471203187226" expanded="true" signature="2549:2581" ph="{...}" />
-            <marker date="1471203187226" expanded="true" signature="2589:2621" ph="{...}" />
-            <marker date="1471203187226" expanded="true" signature="2637:2703" ph="{...}" />
-            <marker date="1471203187226" expanded="true" signature="2710:2775" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/app/employee/employeedetails.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="80" column="36" selection-start-line="80" selection-start-column="36" selection-end-line="80" selection-end-column="36" />
-          <folding>
-            <marker date="1471202899979" expanded="true" signature="589:2158" ph="..." />
-            <marker date="1471202899979" expanded="true" signature="647:2120" ph="..." />
-            <marker date="1471202899979" expanded="true" signature="712:2077" ph="..." />
-            <marker date="1471202899979" expanded="true" signature="760:1055" ph="..." />
-            <marker date="1471202899979" expanded="true" signature="1100:1755" ph="..." />
-            <marker date="1471202899979" expanded="true" signature="1146:1647" ph="..." />
-            <marker date="1471202899979" expanded="true" signature="1802:2054" ph="..." />
-            <marker date="1471202899979" expanded="true" signature="2218:2398" ph="{...}" />
-            <marker date="1471202899979" expanded="true" signature="2423:2486" ph="{...}" />
-            <marker date="1471202899979" expanded="true" signature="2509:2544" ph="{...}" />
-            <marker date="1471202899979" expanded="true" signature="2912:2914" ph="{...}" />
-            <marker date="1471202899979" expanded="true" signature="3391:3397" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/app/employee/employeelist.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="54" column="1" selection-start-line="54" selection-start-column="1" selection-end-line="54" selection-end-column="1" />
-          <folding>
-            <element signature="e#1028#1245#0" expanded="false" />
-            <marker date="1471201897754" expanded="true" signature="640:856" ph="..." />
-            <marker date="1471201897754" expanded="true" signature="682:837" ph="..." />
-            <marker date="1471201897754" expanded="true" signature="1041:1111" ph="{...}" />
-            <marker date="1471201897754" expanded="true" signature="1130:1238" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/app/employee/newemployee.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="707">
-          <caret line="485" column="23" selection-start-line="485" selection-start-column="23" selection-end-line="485" selection-end-column="23" />
+        <state relative-caret-position="705">
+          <caret line="485" column="22" selection-start-line="485" selection-start-column="22" selection-end-line="485" selection-end-column="22" />
           <folding>
             <element signature="e#0#48#0" expanded="true" />
             <element signature="n#!!block;n#ngOnInit#0;n#NewEmployeeComponent#0" expanded="false" />
@@ -1102,6 +1113,7 @@
             <element signature="e#20582#21001#0" expanded="false" />
             <element signature="n#!!block;n#handleRadioChange#0;n#NewEmployeeComponent#0" expanded="false" />
             <element signature="e#22032#22086#0" expanded="false" />
+            <element signature="n#!!block;n#addEmployeeSkill#0;n#NewEmployeeComponent#0" expanded="false" />
             <element signature="n#!!block#1;n#isEmail#0;n#NewEmployeeComponent#0" expanded="false" />
             <element signature="e#23100#23149#0" expanded="false" />
             <element signature="n#!!block;n#addTraining#0;n#NewEmployeeComponent#0" expanded="false" />
@@ -1219,6 +1231,80 @@
             <marker date="1471203450128" expanded="true" signature="20697:20749" ph="{...}" />
             <marker date="1471203450128" expanded="true" signature="20755:20827" ph="{...}" />
             <marker date="1471203450128" expanded="false" signature="22811:22872" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/app/employee/employeedetails.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="19" column="83" selection-start-line="19" selection-start-column="83" selection-end-line="19" selection-end-column="83" />
+          <folding>
+            <marker date="1471219507517" expanded="true" signature="589:2186" ph="..." />
+            <marker date="1471219507517" expanded="true" signature="647:2148" ph="..." />
+            <marker date="1471219507517" expanded="true" signature="712:2105" ph="..." />
+            <marker date="1471219507517" expanded="true" signature="760:1055" ph="..." />
+            <marker date="1471219507517" expanded="true" signature="1100:1783" ph="..." />
+            <marker date="1471219507517" expanded="true" signature="1146:1675" ph="..." />
+            <marker date="1471219507517" expanded="true" signature="1830:2082" ph="..." />
+            <marker date="1471219507517" expanded="true" signature="2246:2426" ph="{...}" />
+            <marker date="1471219507517" expanded="true" signature="2451:2514" ph="{...}" />
+            <marker date="1471219507517" expanded="true" signature="2537:2572" ph="{...}" />
+            <marker date="1471219507517" expanded="true" signature="2948:2950" ph="{...}" />
+            <marker date="1471219507517" expanded="true" signature="3427:3433" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/app/employee/employeelist.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="34" column="18" selection-start-line="34" selection-start-column="18" selection-end-line="34" selection-end-column="18" />
+          <folding>
+            <element signature="e#1028#1245#0" expanded="false" />
+            <marker date="1471219832955" expanded="true" signature="640:856" ph="..." />
+            <marker date="1471219832955" expanded="true" signature="682:837" ph="..." />
+            <marker date="1471219832955" expanded="true" signature="1041:1111" ph="{...}" />
+            <marker date="1471219832955" expanded="true" signature="1130:1238" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/app/employee/employee.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-221">
+          <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+          <folding>
+            <marker date="1471202930819" expanded="true" signature="3272:3315" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/app/employee/employeebasicdetails.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="95" column="74" selection-start-line="95" selection-start-column="74" selection-end-line="95" selection-end-column="74" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+            <marker date="1471221203149" expanded="true" signature="360:2195" ph="..." />
+            <marker date="1471221203149" expanded="true" signature="406:2172" ph="..." />
+            <marker date="1471221203149" expanded="true" signature="446:629" ph="..." />
+            <marker date="1471221203149" expanded="true" signature="490:606" ph="..." />
+            <marker date="1471221203149" expanded="true" signature="684:1373" ph="..." />
+            <marker date="1471221203149" expanded="true" signature="1428:2153" ph="..." />
+            <marker date="1471221203149" expanded="true" signature="1484:2130" ph="..." />
+            <marker date="1471221203149" expanded="true" signature="2234:2301" ph="{...}" />
+            <marker date="1471221203149" expanded="true" signature="2319:2349" ph="{...}" />
+            <marker date="1471221203149" expanded="true" signature="2371:2399" ph="{...}" />
+            <marker date="1471221203149" expanded="true" signature="2414:2453" ph="{...}" />
+            <marker date="1471221203149" expanded="true" signature="2469:2503" ph="{...}" />
+            <marker date="1471221203149" expanded="true" signature="2525:2558" ph="{...}" />
+            <marker date="1471221203149" expanded="true" signature="2568:2599" ph="{...}" />
+            <marker date="1471221203149" expanded="true" signature="2612:2642" ph="{...}" />
+            <marker date="1471221203149" expanded="true" signature="2650:2682" ph="{...}" />
+            <marker date="1471221203149" expanded="true" signature="2690:2722" ph="{...}" />
+            <marker date="1471221203149" expanded="true" signature="2738:2804" ph="{...}" />
+            <marker date="1471221203149" expanded="true" signature="2811:2876" ph="{...}" />
           </folding>
         </state>
       </provider>

@@ -17,7 +17,7 @@ import {EditEmployeeComponent} from "./editemployee.component";
                     </div>
                     <div class="modal-body">
                     <ul class="nav nav-tabs">
-                        <li><a [routerLink]="['./basic']">Basic</a></li>
+                        <li><a [routerLink]="['./basic/' , {'id':employeeData?._id}]">Basic</a></li>
                         <li><a href="#">Overview</a></li>
                         <li><a href="#">Employees</a></li>
                         <li><a href="#">Projects</a></li>
@@ -56,9 +56,9 @@ import {EditEmployeeComponent} from "./editemployee.component";
     `],
     directives: [ROUTER_DIRECTIVES,EmployeeBasicDetailsComponent]
 })
-@Routes([
-    {path: '/basic' , component : EmployeeBasicDetailsComponent}
-])
+/*@Routes([
+    {path: '/basic/:id' , component : EmployeeBasicDetailsComponent}
+])*/
 export class EmployeeDetailsComponent implements OnInit{
     employeeDisplay='none';
     employeeData : Employee;
