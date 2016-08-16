@@ -1,27 +1,31 @@
 var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
-var passwordHash = require('password-hash');
+var passwordHash = require('password-hash/lib/password-hash');
 
 var User = require('../models/user');
 var ApplicationUser = require('../models/applicationuser');
 
 router.post('/signin',function(req,res,next){
+    var passwordHashed = passwordHash.generate(req.body.password);
+
+    console.log(passwordHashed);
     User.findOne({email: req.body.email}).populate('applicationUser').exec(function(err,user){
+
         if(err){
             res.status(500).json({
                 title: 'An error occurred',
                 error: err
             })
         }
-        if(!user){
+        if(!user || user === null){
             res.status(401).json({
                 title: 'User Not Authorized',
                 error: {message:'User Could Not Be Found'}
             })
         }
         var token = jwt.sign({user:user},'replaceThisSecret',{expiresIn: 7200});
-        console.log(user);
+
         res.status(200).json({
             message: 'Success',
             obj: token,
@@ -45,8 +49,7 @@ router.post('/',function(req,res,next) {
                 error: err
             })
         }
-        console.log(result.email);
-        console.log(result.firstName);
+        
         var applicationUser = new ApplicationUser({
             firstName: result.firstName,
             lastName: result.lastName,

@@ -14,7 +14,7 @@ var UserOverviewComponent = (function () {
     }
     UserOverviewComponent = __decorate([
         core_1.Component({
-            selector: 'my-user-overview',
+            selector: "my-user-overview",
             template: "\n        <h1>User Overview</h1>\n    "
         }), 
         __metadata('design:paramtypes', [])
@@ -23,4 +23,4 @@ var UserOverviewComponent = (function () {
 }());
 exports.UserOverviewComponent = UserOverviewComponent;
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVzZXIvdXNlcm92ZXJ2aWV3LmNvbXBvbmVudC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O0FBQUEscUJBQXdCLGVBQWUsQ0FBQyxDQUFBO0FBT3hDO0lBQUE7SUFFQSxDQUFDO0lBUkQ7UUFBQyxnQkFBUyxDQUFDO1lBQ1AsUUFBUSxFQUFFLGtCQUFrQjtZQUM1QixRQUFRLEVBQUUsd0NBRVQ7U0FDSixDQUFDOzs2QkFBQTtJQUdGLDRCQUFDO0FBQUQsQ0FGQSxBQUVDLElBQUE7QUFGWSw2QkFBcUIsd0JBRWpDLENBQUEiLCJmaWxlIjoidXNlci91c2Vyb3ZlcnZpZXcuY29tcG9uZW50LmpzIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHtDb21wb25lbnR9IGZyb20gXCJAYW5ndWxhci9jb3JlXCI7XHJcbkBDb21wb25lbnQoe1xyXG4gICAgc2VsZWN0b3I6ICdteS11c2VyLW92ZXJ2aWV3JyxcclxuICAgIHRlbXBsYXRlOiBgXHJcbiAgICAgICAgPGgxPlVzZXIgT3ZlcnZpZXc8L2gxPlxyXG4gICAgYFxyXG59KVxyXG5leHBvcnQgY2xhc3MgVXNlck92ZXJ2aWV3Q29tcG9uZW50e1xyXG4gICAgXHJcbn0iXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0=
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVzZXIvdXNlcm92ZXJ2aWV3LmNvbXBvbmVudC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O0FBQUEscUJBQXdCLGVBQWUsQ0FBQyxDQUFBO0FBT3hDO0lBQUE7SUFBb0MsQ0FBQztJQU5yQztRQUFDLGdCQUFTLENBQUM7WUFDUCxRQUFRLEVBQUUsa0JBQWtCO1lBQzVCLFFBQVEsRUFBRSx3Q0FFVDtTQUNKLENBQUM7OzZCQUFBO0lBQ2tDLDRCQUFDO0FBQUQsQ0FBcEMsQUFBcUMsSUFBQTtBQUF4Qiw2QkFBcUIsd0JBQUcsQ0FBQSIsImZpbGUiOiJ1c2VyL3VzZXJvdmVydmlldy5jb21wb25lbnQuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQge0NvbXBvbmVudH0gZnJvbSBcIkBhbmd1bGFyL2NvcmVcIjtcclxuQENvbXBvbmVudCh7XHJcbiAgICBzZWxlY3RvcjogXCJteS11c2VyLW92ZXJ2aWV3XCIsXHJcbiAgICB0ZW1wbGF0ZTogYFxyXG4gICAgICAgIDxoMT5Vc2VyIE92ZXJ2aWV3PC9oMT5cclxuICAgIGBcclxufSlcclxuZXhwb3J0IGNsYXNzIFVzZXJPdmVydmlld0NvbXBvbmVudCB7fVxyXG4iXSwic291cmNlUm9vdCI6Ii9zb3VyY2UvIn0=

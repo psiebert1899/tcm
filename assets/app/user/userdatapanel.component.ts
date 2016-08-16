@@ -4,7 +4,7 @@ import {UserService} from "./user.service";
 import {ErrorService} from "../errors/error.service";
 import {Routes, ROUTER_PROVIDERS, ROUTER_DIRECTIVES} from "@angular/router";
 import {UserOverviewComponent} from "./useroverview.component";
-import {UserEmployeeComponent} from "./useremployee.coomponent";
+import {UserEmployeeComponent} from "./useremployee.component";
 import {EmployeeBenefitsComponent} from "./employeebenefits.component";
 import {EmployeeNotesComponent} from "./employeenotes.component";
 import {EmployeeProjectsComponent} from "./employeeprojects.component";
@@ -29,7 +29,7 @@ import {EmployeeTrainingComponent} from "./employeetraining.component";
          <div class="row">
             <div class="col-md-10 panel panel-default">
                 <router-outlet></router-outlet>
-            </div> 
+            </div>
         </div>
     `,
     directives: [UserOverviewComponent,UserEmployeeComponent,EmployeeBenefitsComponent,EmployeeNotesComponent,

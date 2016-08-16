@@ -14,7 +14,7 @@ var UserEmployeeComponent = (function () {
     }
     UserEmployeeComponent = __decorate([
         core_1.Component({
-            selector: 'my-user-employees',
+            selector: "my-user-employees",
             template: "\n        <h1>Employee List</h1>\n    "
         }), 
         __metadata('design:paramtypes', [])
@@ -23,4 +23,4 @@ var UserEmployeeComponent = (function () {
 }());
 exports.UserEmployeeComponent = UserEmployeeComponent;
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVzZXIvdXNlcmVtcGxveWVlLmNvb21wb25lbnQudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7OztBQUFBLHFCQUF3QixlQUFlLENBQUMsQ0FBQTtBQU94QztJQUFBO0lBRUEsQ0FBQztJQVJEO1FBQUMsZ0JBQVMsQ0FBQztZQUNQLFFBQVEsRUFBRyxtQkFBbUI7WUFDOUIsUUFBUSxFQUFDLHdDQUVSO1NBQ0osQ0FBQzs7NkJBQUE7SUFHRiw0QkFBQztBQUFELENBRkEsQUFFQyxJQUFBO0FBRlksNkJBQXFCLHdCQUVqQyxDQUFBIiwiZmlsZSI6InVzZXIvdXNlcmVtcGxveWVlLmNvb21wb25lbnQuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQge0NvbXBvbmVudH0gZnJvbSBcIkBhbmd1bGFyL2NvcmVcIjtcclxuQENvbXBvbmVudCh7XHJcbiAgICBzZWxlY3RvciA6ICdteS11c2VyLWVtcGxveWVlcycsXHJcbiAgICB0ZW1wbGF0ZTpgXHJcbiAgICAgICAgPGgxPkVtcGxveWVlIExpc3Q8L2gxPlxyXG4gICAgYFxyXG59KVxyXG5leHBvcnQgY2xhc3MgVXNlckVtcGxveWVlQ29tcG9uZW50e1xyXG5cclxufSJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVzZXIvdXNlcmVtcGxveWVlLmNvbXBvbmVudC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O0FBQUEscUJBQXdCLGVBQWUsQ0FBQyxDQUFBO0FBT3hDO0lBQUE7SUFBb0MsQ0FBQztJQU5yQztRQUFDLGdCQUFTLENBQUM7WUFDUCxRQUFRLEVBQUcsbUJBQW1CO1lBQzlCLFFBQVEsRUFBRSx3Q0FFVDtTQUNKLENBQUM7OzZCQUFBO0lBQ2tDLDRCQUFDO0FBQUQsQ0FBcEMsQUFBcUMsSUFBQTtBQUF4Qiw2QkFBcUIsd0JBQUcsQ0FBQSIsImZpbGUiOiJ1c2VyL3VzZXJlbXBsb3llZS5jb21wb25lbnQuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQge0NvbXBvbmVudH0gZnJvbSBcIkBhbmd1bGFyL2NvcmVcIjtcclxuQENvbXBvbmVudCh7XHJcbiAgICBzZWxlY3RvciA6IFwibXktdXNlci1lbXBsb3llZXNcIixcclxuICAgIHRlbXBsYXRlOiBgXHJcbiAgICAgICAgPGgxPkVtcGxveWVlIExpc3Q8L2gxPlxyXG4gICAgYFxyXG59KVxyXG5leHBvcnQgY2xhc3MgVXNlckVtcGxveWVlQ29tcG9uZW50IHt9XHJcbiJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ==
