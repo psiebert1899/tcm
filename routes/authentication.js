@@ -7,11 +7,8 @@ var User = require('../models/user');
 var ApplicationUser = require('../models/applicationuser');
 
 router.post('/signin',function(req,res,next){
-    var passwordHashed = passwordHash.generate(req.body.password);
 
-    console.log(passwordHashed);
     User.findOne({email: req.body.email}).populate('applicationUser').exec(function(err,user){
-
         if(err){
             res.status(500).json({
                 title: 'An error occurred',
@@ -25,6 +22,13 @@ router.post('/signin',function(req,res,next){
             })
         }
         var token = jwt.sign({user:user},'replaceThisSecret',{expiresIn: 7200});
+        
+        if(!passwordHash.verify(req.body.password, user.password)){
+            return res.status(500).json({
+                title: 'Incorrect User Email or Password',
+                error: {message: 'Could not verify user credentials'}
+            })
+        }
 
         res.status(200).json({
             message: 'Success',
@@ -49,7 +53,7 @@ router.post('/',function(req,res,next) {
                 error: err
             })
         }
-        
+
         var applicationUser = new ApplicationUser({
             firstName: result.firstName,
             lastName: result.lastName,

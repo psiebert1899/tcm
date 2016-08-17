@@ -23,7 +23,7 @@ import {ErrorService} from "./errors/error.service";
                       </button>
                       <a class="navbar-brand" href="#">TCM</a>
                     </div>
-                
+
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                       <ul class="nav navbar-nav" *ngIf="isLoggedIn()">
@@ -67,13 +67,13 @@ import {ErrorService} from "./errors/error.service";
                       <ul class="nav navbar-nav navbar-right">
                         <li *ngIf="isLoggedIn()"><a [routerLink]="['/user/profile']">{{loggedUser!=undefined?loggedUser.firstName+" " + loggedUser.lastName : 'Default User'}}</a></li>
                         <li *ngIf="!isLoggedIn()">
-                          <form [ngFormModel]="myForm" (ngSubmit)="onSubmit()">                           
+                          <form [ngFormModel]="myForm" (ngSubmit)="onSubmit()">
                               <input type="email" id="email" placeholder="Email Address"  [ngFormControl]="myForm.find('email')"/>
                               <input type="password" id="password" placeholder="Password" [ngFormControl]="myForm.find('password')"/>
-                              <button type="submit" class="btn btn-primary">Sign in</button>                            
+                              <button type="submit" class="btn btn-primary">Sign in</button>
                           </form>
                         </li>
-                        
+
                         <li><a [routerLink]="['auth/logout']" *ngIf="isLoggedIn()">Sign Out</a></li>
                       </ul>
                     </div><!-- /.navbar-collapse -->
@@ -134,7 +134,7 @@ export class HeaderComponent implements OnInit{
         });
     }
     onSubmit(){
-      
+
       const user:User = new User(this.myForm.value.email,this.myForm.value.password);
         this._authService.signin(user).subscribe(
             data => {
