@@ -45,7 +45,7 @@ export class EmployeeListComponent implements OnInit{
                 this._employeeService.employees = employees;
                 this.dataLoaded=true;
             },
-            error => console.log(error)
+            error => this._errorService.handleError(error)
         )
     }
     setSelectedEmployee(emp:Employee){

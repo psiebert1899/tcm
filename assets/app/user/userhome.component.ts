@@ -41,7 +41,7 @@ export class UserHomeComponent implements OnInit{
         this.dataLoaded=false;
     }
     ngOnInit(){
-        if(this._userService.user==undefined || this._userService.user==null){
+        if(localStorage.getItem('token')!=null){
        this._userService.getUser().subscribe(
            data=>{
                this.appUser=data;
