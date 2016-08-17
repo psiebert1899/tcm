@@ -20,6 +20,7 @@ import {ProjectListComponent} from "./project/projectlist.component";
         <div class="container-fluid" id="myContainer">
             <router-outlet></router-outlet>
         </div>
+        <my-error></my-error>
     `,
     directives: [HeaderComponent, ROUTER_DIRECTIVES, ErrorComponent],
     styles: [`

@@ -79,6 +79,7 @@ export class EmployeeDetailsComponent implements OnInit{
     }
     onEmployeeClosed(){
         this.employeeDisplay='none';
+        this._router.navigateByUrl('/employee/list');
     }
     onEmployeeEdit(){
        this._router.navigateByUrl('/employee/edit');

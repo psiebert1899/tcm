@@ -21,6 +21,12 @@ router.post('/signin',function(req,res,next){
                 error: {message:'User Could Not Be Found'}
             })
         }
+        if(!passwordHash.verify(req.body.password,user.password)){
+            return res.status(500).json({
+                title: 'Incorrect User Email or Password',
+                error: {message: 'Could not verify user credentials'}
+            })
+        }
         var token = jwt.sign({user:user},'replaceThisSecret',{expiresIn: 7200});
         
         if(!passwordHash.verify(req.body.password, user.password)){
