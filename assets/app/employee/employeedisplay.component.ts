@@ -3,8 +3,8 @@ import {Employee} from "./employee";
 import {EmployeeService} from "./employee.service";
 import {ErrorService} from "../errors/error.service";
 @Component({
-    selector: 'my-employee-display',
-    template:`
+    selector: "my-employee-display",
+    template: `
         <div class="col-md-2">
             <div class="thumbnail">
                 <img src="{{employee.image}}" class="img img-responsive"/>
@@ -13,7 +13,7 @@ import {ErrorService} from "../errors/error.service";
             </div>
         </div>
     `,
-    styles:[`
+    styles: [`
         h3{
             text-align:center;
         }
@@ -22,8 +22,8 @@ import {ErrorService} from "../errors/error.service";
         }
     `]
 })
-export class EmployeeDisplayComponent{
+export class EmployeeDisplayComponent {
 @Input() employee: Employee;
-    constructor(){
+    constructor() {
     }
 }

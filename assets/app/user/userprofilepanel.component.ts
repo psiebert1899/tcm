@@ -3,13 +3,13 @@ import {ApplicationUser} from "./applicationuser";
 import {UserService} from "./user.service";
 import {ErrorService} from "../errors/error.service";
 @Component({
-    selector: 'my-user-profile-panel',
-    template:`
+    selector: "my-user-profile-panel",
+    template: `
         <div class="col-md-12">
             <div class="container-fluid">
                  <div class="col-md-2">
                     <div class="thumbnail">
-                        <img src="{{appUser?.image}}" class="img img-responsive">      
+                        <img src="{{appUser?.image}}" class="img img-responsive">
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -31,16 +31,16 @@ import {ErrorService} from "../errors/error.service";
             </div>
         </div>
     `,
-    styles:[`
-    	#mylist{
+    styles: [`
+      #mylist{
             font-size: 1.5em;
-    	}
-    	.right-align{
-    	    float:right;
-    	}
+      }
+      .right-align{
+        float:right;
+      }
     `]
 })
-export class UserProfilePanelComponent{
-    @Input() appUser:ApplicationUser;
-    constructor(private _userService:UserService, private _errorService : ErrorService){}
+export class UserProfilePanelComponent {
+    @Input() appUser: ApplicationUser;
+    constructor(private _userService: UserService, private _errorService: ErrorService) {}
 }
