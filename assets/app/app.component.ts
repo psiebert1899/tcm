@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component } from "@angular/core";
 import {ROUTER_DIRECTIVES, Routes} from "@angular/router";
 import {HeaderComponent} from "./header.component";
 import {AuthenticationComponent} from "./auth/authentication.component";
@@ -14,15 +14,15 @@ import {NewProjectComponent} from "./project/newproject.component";
 import {ProjectListComponent} from "./project/projectlist.component";
 
 @Component({
-    selector: 'my-app',
-    template: ` 
+    selector: "my-app",
+    template: `
         <my-header></my-header>
         <div class="container-fluid" id="myContainer">
             <router-outlet></router-outlet>
         </div>
         <my-error></my-error>
     `,
-    directives:[HeaderComponent,ROUTER_DIRECTIVES,ErrorComponent],
+    directives: [HeaderComponent, ROUTER_DIRECTIVES, ErrorComponent],
     styles: [`
         .router-link-active{
             color:white;
@@ -42,16 +42,15 @@ import {ProjectListComponent} from "./project/projectlist.component";
     `]
 })
 @Routes([
-    {path:"/auth/signin",component:SigninComponent},
-    {path:"/",component:SignupComponent},
-    {path:'/auth/logout',component:LogoutComponent},
-    {path:'/user/profile',component:UserHomeComponent},
-    {path:'/employee/new',component:NewEmployeeComponent},
-    {path:'/employee/list', component: EmployeeListComponent},
-    {path: '/employee/edit', component: EditEmployeeComponent},
-    {path: '/project/new',component:NewProjectComponent},
-    {path: 'project/list', component:ProjectListComponent}
+    {path: "/auth/signin", component: SigninComponent},
+    {path: "/", component: SignupComponent},
+    {path: "/auth/logout", component: LogoutComponent},
+    {path: "/user/profile", component: UserHomeComponent},
+    {path: "/employee/new", component: NewEmployeeComponent},
+    {path: "/employee/list", component: EmployeeListComponent},
+    {path: "/employee/edit", component: EditEmployeeComponent},
+    {path: "/project/new", component: NewProjectComponent},
+    {path: "project/list", component: ProjectListComponent}
 ])
 export class AppComponent {
-    
 }

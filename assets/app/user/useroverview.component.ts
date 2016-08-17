@@ -1,10 +1,8 @@
 import {Component} from "@angular/core";
 @Component({
-    selector: 'my-user-overview',
+    selector: "my-user-overview",
     template: `
         <h1>User Overview</h1>
     `
 })
-export class UserOverviewComponent{
-    
-}
+export class UserOverviewComponent {}
