@@ -115,7 +115,7 @@ import {Employee} from "./employee";
             <button class="btn btn-primary btn-lg center-block">Submit</button>
         </div>
         </form>
-        
+
     `,
     styles:[`
         .left-form{
