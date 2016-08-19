@@ -7,10 +7,10 @@ import {AuthenticationService} from "./auth/authentication.service";
 import {UserService} from "./user/user.service";
 import {ApplicationUser} from "./user/applicationuser";
 import {ErrorService} from "./errors/error.service";
-
+import {ClockComponent} from "./utility/clock.component";
 @Component({
     selector: 'my-header',
-    template:`
+    template: `
                 <nav class="navbar navbar-default">
                   <div class="container-fluid">
                     <!-- Brand and toggle get grouped for better mobile display -->
@@ -80,7 +80,7 @@ import {ErrorService} from "./errors/error.service";
                   </div><!-- /.container-fluid -->
                 </nav>
     `,
-    styles:[`
+    styles: [ `
                 header{
                     margin-bottom:20px;
                 }
@@ -107,7 +107,7 @@ export class HeaderComponent implements OnInit{
     public myForm: ControlGroup;
     constructor(private _fb:FormBuilder, private _authService:AuthenticationService, private _router :Router, private _userService : UserService, private _errorService:ErrorService){}
 
-    isLoggedIn(){
+    isLoggedIn() {
         return this._authService.isLoggedIn();
     }
     ngOnInit() {
