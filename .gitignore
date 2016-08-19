@@ -38,3 +38,6 @@ jspm_packages
 
 #Compiled Modules
 public/js/vendor
+
+#Compiled TS
+public/js/app
