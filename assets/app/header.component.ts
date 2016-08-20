@@ -64,13 +64,22 @@ import {ClockComponent} from "./utility/clock.component";
                           </ul>
                         </li>
                       </ul>
+                      <ul class="nav navbar-nav">
+                        <li>
+                          <my-current-time></my-current-time>
+                        </li>
+                      </ul>
                       <ul class="nav navbar-nav navbar-right">
                         <li *ngIf="isLoggedIn()"><a [routerLink]="['/user/profile']">{{loggedUser!=undefined?loggedUser.firstName+" " + loggedUser.lastName : 'Default User'}}</a></li>
                         <li *ngIf="!isLoggedIn()">
                           <form [ngFormModel]="myForm" (ngSubmit)="onSubmit()">
-                              <input type="email" id="email" placeholder="Email Address"  [ngFormControl]="myForm.find('email')"/>
-                              <input type="password" id="password" placeholder="Password" [ngFormControl]="myForm.find('password')"/>
-                              <button type="submit" class="btn btn-primary">Sign in</button>
+                            <table>
+                              <tr>
+                                <td>Email<input type="email" id="email" placeholder="Email Address"  [ngFormControl]="myForm.find('email')"/></td>
+                                <td>Password:<input type="password" id="password" placeholder="Password" [ngFormControl]="myForm.find('password')"/></td>
+                                <td><button type="submit" class="btn btn-primary">Sign in</button></td>
+                              </tr>
+                            </table>
                           </form>
                         </li>
 
@@ -87,6 +96,8 @@ import {ClockComponent} from "./utility/clock.component";
                 ul{
                     text-align:center;
                 }
+
+
                 li{
                     float:none;
                     display:inline-block;
@@ -99,7 +110,7 @@ import {ClockComponent} from "./utility/clock.component";
                     font-family: NEORD;
                 }
             `],
-    directives: [ROUTER_DIRECTIVES]
+    directives: [ROUTER_DIRECTIVES, ClockComponent]
 })
 
 export class HeaderComponent implements OnInit{

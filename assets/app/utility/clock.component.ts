@@ -1,16 +1,27 @@
-import {Component, Attribute} from "angular2/core";
+import {Component, Attribute} from "@angular/core";
 
 @Component({
   selector: "my-current-time",
   template: `
-      <h2 (updateTime)="updateMyTime()">{{date | date: format}}</h2>
+      <div>
+        <span>{{date | date: 'ddMMyyyy h:mm:ss'}}</span>
+        </div>
+    `,
+  styles: [`
+    div{
+      position:fixed;
+      margin: 0 auto;
+    }
+    span{
+      margin:0 auto;
+    }
     `
+  ]
 })
 export class ClockComponent {
    private date;
 
-  constructor(@Attribute("format") format) {
-    this.format = format;
+  constructor() {
     this.date =  new Date();
 
     setInterval(() => {
