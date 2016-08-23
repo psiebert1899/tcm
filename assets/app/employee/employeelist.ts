@@ -2,10 +2,6 @@ import {Component, OnInit, Output, EventEmitter} from "@angular/core";
 import {EmployeeService} from "./employee.service";
 import {ErrorService} from "../errors/error.service";
 import {Employee} from "./employee";
-import {EmployeeDisplayComponent} from "./employeedisplay.component";
-import {EmployeeDetailsComponent} from "./employeedetails.component";
-import {EmployeeBasicDetailsComponent} from "./employeebasicdetails.component";
-import {Routes} from "@angular/router";
 import {Query} from "../utility/query";
 import {EmployeeSearchPipe} from "./employee-search.pipe";
 @Component({
@@ -29,7 +25,6 @@ import {EmployeeSearchPipe} from "./employee-search.pipe";
         </section>
         <my-employee-details></my-employee-details>
     `,
-    directives : [EmployeeDisplayComponent, EmployeeDetailsComponent, EmployeeBasicDetailsComponent],
     pipes: [EmployeeSearchPipe],
     styles: [`
         h1{
@@ -75,9 +70,7 @@ import {EmployeeSearchPipe} from "./employee-search.pipe";
           }
     `]
 })
-@Routes([
-    {path: "/basic" , component : EmployeeBasicDetailsComponent}
-])
+
 export class EmployeeListComponent implements OnInit {
     constructor(private _employeeService: EmployeeService, private _errorService: ErrorService) {}
     employeeFilters = ["firstName", "lastName", "email"];

@@ -1,17 +1,4 @@
 import { Component } from "@angular/core";
-import {ROUTER_DIRECTIVES, Routes} from "@angular/router";
-import {HeaderComponent} from "./header.component";
-import {AuthenticationComponent} from "./auth/authentication.component";
-import {SigninComponent} from "./auth/signin.component";
-import {SignupComponent} from "./auth/signup.component";
-import {LogoutComponent} from "./auth/logout.component";
-import {ErrorComponent} from "./errors/error.component";
-import {UserHomeComponent} from "./user/userhome.component";
-import {NewEmployeeComponent} from "./employee/newemployee.component";
-import {EmployeeListComponent} from "./employee/employeelist";
-import {EditEmployeeComponent} from "./employee/editemployee.component";
-import {NewProjectComponent} from "./project/newproject.component";
-import {ProjectListComponent} from "./project/projectlist.component";
 
 @Component({
     selector: "my-app",
@@ -21,8 +8,8 @@ import {ProjectListComponent} from "./project/projectlist.component";
             <router-outlet></router-outlet>
         </div>
         <my-error></my-error>
+
     `,
-    directives: [HeaderComponent, ROUTER_DIRECTIVES, ErrorComponent],
     styles: [`
         .router-link-active{
             color:white;
@@ -41,16 +28,5 @@ import {ProjectListComponent} from "./project/projectlist.component";
         }
     `]
 })
-@Routes([
-    {path: "/auth/signin", component: SigninComponent},
-    {path: "/", component: SignupComponent},
-    {path: "/auth/logout", component: LogoutComponent},
-    {path: "/user/profile", component: UserHomeComponent},
-    {path: "/employee/new", component: NewEmployeeComponent},
-    {path: "/employee/list", component: EmployeeListComponent},
-    {path: "/employee/edit", component: EditEmployeeComponent},
-    {path: "/project/new", component: NewProjectComponent},
-    {path: "project/list", component: ProjectListComponent}
-])
 export class AppComponent {
 }

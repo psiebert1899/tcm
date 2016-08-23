@@ -1,33 +1,32 @@
 import {Component, OnInit} from "@angular/core";
-import {ControlGroup, FormBuilder, Validators} from "@angular/common";
 import {ProjectService} from "./project.service";
-import {AccordionComponentGroup} from "../utility/accordiongroup.component";
-import {AccordionComponent} from "../utility/accordion.component";
 import {Project} from "./project";
 import {EmployeeService} from "../employee/employee.service";
 import {Query} from "../utility/query";
 import {Router} from "@angular/router";
+import {FormGroup, FormBuilder, Validators} from "@angular/forms";
+
 @Component({
     selector : 'my-new-project',
     template:`
-    <form [ngFormModel]="myForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
         <accordion>
             <accordion-group heading="Basic Details" [isOpen]="true">
                 <div class="form-group">
                     <label for="organization">Organization</label>
-                    <input type="text" [ngFormControl]="myForm.find('organization')" id="organization" class="form-control"/>
+                    <input type="text" [formControl]="myForm.find('organization')" id="organization" class="form-control"/>
                 </div>
                 <div class="form-group">
                     <label for="name">Project Name:</label>
-                    <input type="text" [ngFormControl]="myForm.find('name')" id="name" class="form-control">
+                    <input type="text" [formControl]="myForm.find('name')" id="name" class="form-control">
                 </div>
                 <div class="form-group">
                     <label for="Image">Image</label>
-                    <input type="text" [ngFormControl]="myForm.find('image')" id="image" class="form-control" value="/imgs/projectImgs/defaultProjectImage.png"/>
+                    <input type="text" [formControl]="myForm.find('image')" id="image" class="form-control" value="/imgs/projectImgs/defaultProjectImage.png"/>
                 </div>
                 <div class="form-group">
                     <label for="Manager">Manager</label>
-                    <select name="Manager" id="manager" [ngFormControl]="myForm.find('manager')" class="form-control">
+                    <select name="Manager" id="manager" [formControl]="myForm.find('manager')" class="form-control">
                         <option *ngFor="let m of managers" [value]="m._id">{{m.firstName + " "+m.lastName}}</option>
                     </select>
                 </div>
@@ -46,11 +45,10 @@ import {Router} from "@angular/router";
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
-    `,
-    directives:[AccordionComponent,AccordionComponentGroup]
+    `
 })
 export class NewProjectComponent implements OnInit{
-    myForm:ControlGroup;
+    myForm:FormGroup;
     managers = [];
     constructor(private _fb:FormBuilder,private projectService:ProjectService,private _employeeService:EmployeeService,private _router:Router){}
     ngOnInit(){

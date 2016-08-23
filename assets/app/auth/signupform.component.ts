@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild, ElementRef} from "@angular/core";
-import {ControlGroup, FormBuilder, Validators, Control} from "@angular/common";
 import {AuthenticationService} from "./authentication.service";
 import {ErrorService} from "../errors/error.service";
 import {User} from "./user";
+import {FormGroup, FormBuilder, Validators, FormControl} from "@angular/forms";
 @Component({
 	selector: 'registration-form',
   	template: `
@@ -13,7 +13,7 @@ import {User} from "./user";
         <div #myModal class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   			<div class="modal-dialog" role="document">
     			<div class="modal-content">
-      				<form id="myForm" [ngFormModel]="myForm">
+      				<form id="myForm" [formGroup]="myForm">
       					<div class="modal-header">
         					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         					<h4 class="modal-title" id="myModalLabel">Registration Form</h4>
@@ -21,19 +21,19 @@ import {User} from "./user";
       					<div class="modal-body">
                 			<div class="form-group">
                     			<label for="firstName">First Name:</label>
-                    			<input type="text" [ngFormControl]="myForm.find('firstName')" id="firstName" class="form-control"/>
+                    			<input type="text" [formControl]="myForm.find('firstName')" id="firstName" class="form-control"/>
                 			</div>
                 			<div class="form-group">
                     			<label for="lastName">Last Name</label>
-                    			<input type="text" [ngFormControl]="myForm.find('lastName')" id="lastName" class="form-control"/>
+                    			<input type="text" [formControl]="myForm.find('lastName')" id="lastName" class="form-control"/>
                 			</div>
                 			<div class="form-group">
                     			<label for="email">Email:</label>
-                    			<input type="email" [ngFormControl]="myForm.find('email')" id="email" class="form-control" />
+                    			<input type="email" [formControl]="myForm.find('email')" id="email" class="form-control" />
                 			</div>
                 			<div class="form-group">
                     			<label for="password">Password</label>
-                    			<input type="password" [ngFormControl]="myForm.find('password')" id="password" class="form-control" />
+                    			<input type="password" [formControl]="myForm.find('password')" id="password" class="form-control" />
                 			</div>
                 			
             			
@@ -50,7 +50,7 @@ import {User} from "./user";
 })
 
 export class SignupformComponent{
-	myForm:ControlGroup;
+	myForm:FormGroup;
 	@ViewChild('myModal') myModal: ElementRef;
 	
 	constructor(private _fb:FormBuilder,private _authService:AuthenticationService,private _errorService: ErrorService){}
@@ -77,7 +77,7 @@ export class SignupformComponent{
 		});
 	}
 
-	private isEmail(control : Control): {[s:string]:boolean}{
+	private isEmail(control : FormControl): {[s:string]:boolean}{
         if(!control.value.match("[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?")){
             return {invalidMail:true}
         }

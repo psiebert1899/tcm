@@ -18,17 +18,13 @@ import {NewEmployeeBasic} from "./newemployeebasic.component";
     template:`
         <h1>New Employee</h1>
         <ul class="nav nav-tabs">
-            <li><a [routerLink]="['./basic']">Basic</a></li>
-            <li><a [routerLink]="['./advanced']">Advanced</a></li>
+            <li><a routerLink="basic">Basic</a></li>
+            <li><a routerLink="advanced">Advanced</a></li>
         </ul>
         <router-outlet></router-outlet>
-        `,
-    directives:[ROUTER_DIRECTIVES]
+        `
 })
-@Routes([
-    {path: '/advanced' , component : NewEmployeeAdvanced },
-    {path: '/basic', component:NewEmployeeBasic}
-])
+
 export class NewEmployeeComponent{
 
 

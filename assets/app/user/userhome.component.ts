@@ -22,18 +22,9 @@ import {EmployeeNotesComponent} from "./employeenotes.component";
             </div>
                 <my-user-data-panel [appUser]="appUser"></my-user-data-panel>
         </div>
-    `,
-    directives : [UserProfilePanelComponent, UserDataPanelComponent]
+    `
 })
-@Routes([
-    {path: "overview", component: UserOverviewComponent},
-    {path: "employee", component: UserEmployeeComponent},
-    {path: "projects", component: EmployeeProjectsComponent},
-    {path: "resume", component: EmployeeResumeComponent},
-    {path: "training", component: EmployeeTrainingComponent},
-    {path: "benefits", component: EmployeeBenefitsComponent},
-    {path: "notes", component: EmployeeNotesComponent}
-])
+
 export class UserHomeComponent implements OnInit {
     appUser: ApplicationUser;
     public dataLoaded;

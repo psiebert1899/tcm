@@ -8,19 +8,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var UserEmployeeComponent = (function () {
-    function UserEmployeeComponent() {
-    }
-    UserEmployeeComponent = __decorate([
-        core_1.Component({
-            selector: "my-user-employees",
-            template: "\n        <h1>Employee List</h1>\n    "
-        }), 
-        __metadata('design:paramtypes', [])
-    ], UserEmployeeComponent);
-    return UserEmployeeComponent;
-}());
+const core_1 = require("@angular/core");
+let UserEmployeeComponent = class UserEmployeeComponent {
+};
+UserEmployeeComponent = __decorate([
+    core_1.Component({
+        selector: "my-user-employees",
+        template: `
+        <h1>Employee List</h1>
+    `
+    }), 
+    __metadata('design:paramtypes', [])
+], UserEmployeeComponent);
 exports.UserEmployeeComponent = UserEmployeeComponent;
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVzZXIvdXNlcmVtcGxveWVlLmNvbXBvbmVudC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O0FBQUEscUJBQXdCLGVBQWUsQ0FBQyxDQUFBO0FBT3hDO0lBQUE7SUFBb0MsQ0FBQztJQU5yQztRQUFDLGdCQUFTLENBQUM7WUFDUCxRQUFRLEVBQUcsbUJBQW1CO1lBQzlCLFFBQVEsRUFBRSx3Q0FFVDtTQUNKLENBQUM7OzZCQUFBO0lBQ2tDLDRCQUFDO0FBQUQsQ0FBcEMsQUFBcUMsSUFBQTtBQUF4Qiw2QkFBcUIsd0JBQUcsQ0FBQSIsImZpbGUiOiJ1c2VyL3VzZXJlbXBsb3llZS5jb21wb25lbnQuanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQge0NvbXBvbmVudH0gZnJvbSBcIkBhbmd1bGFyL2NvcmVcIjtcclxuQENvbXBvbmVudCh7XHJcbiAgICBzZWxlY3RvciA6IFwibXktdXNlci1lbXBsb3llZXNcIixcclxuICAgIHRlbXBsYXRlOiBgXHJcbiAgICAgICAgPGgxPkVtcGxveWVlIExpc3Q8L2gxPlxyXG4gICAgYFxyXG59KVxyXG5leHBvcnQgY2xhc3MgVXNlckVtcGxveWVlQ29tcG9uZW50IHt9XHJcbiJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ==
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInVzZXIvdXNlcmVtcGxveWVlLmNvbXBvbmVudC50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7O0FBQUEsdUJBQXdCLGVBQWUsQ0FBQyxDQUFBO0FBT3hDO0FBQW9DLENBQUM7QUFOckM7SUFBQyxnQkFBUyxDQUFDO1FBQ1AsUUFBUSxFQUFHLG1CQUFtQjtRQUM5QixRQUFRLEVBQUU7O0tBRVQ7S0FDSixDQUFDOzt5QkFBQTtBQUNXLDZCQUFxQix3QkFBRyxDQUFBIiwiZmlsZSI6InVzZXIvdXNlcmVtcGxveWVlLmNvbXBvbmVudC5qcyIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7Q29tcG9uZW50fSBmcm9tIFwiQGFuZ3VsYXIvY29yZVwiO1xyXG5AQ29tcG9uZW50KHtcclxuICAgIHNlbGVjdG9yIDogXCJteS11c2VyLWVtcGxveWVlc1wiLFxyXG4gICAgdGVtcGxhdGU6IGBcclxuICAgICAgICA8aDE+RW1wbG95ZWUgTGlzdDwvaDE+XHJcbiAgICBgXHJcbn0pXHJcbmV4cG9ydCBjbGFzcyBVc2VyRW1wbG95ZWVDb21wb25lbnQge31cclxuIl0sInNvdXJjZVJvb3QiOiIvc291cmNlLyJ9

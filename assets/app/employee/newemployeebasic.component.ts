@@ -1,37 +1,37 @@
 import {Component, OnInit} from "@angular/core";
-import {ControlGroup, Validators, FormBuilder, Control} from "@angular/common";
 import {EmployeeService} from "./employee.service";
 import {Router} from "@angular/router";
 import {ErrorService} from "../errors/error.service";
 import {Employee} from "./employee";
+import {FormControl, FormGroup, FormBuilder, Validators} from "@angular/forms";
 @Component({
     selector:'my-basic-employee-form',
     template:`
-        <form [ngFormModel]="myForm" (ngSubmit)="onSubmit()">
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
         <div class="col-md-12 form-container">
                 <div class="left-form">
                     <div class="form-group">
                         <label for="firstName">First Name:</label>
-                        <input type="text" [ngFormControl]="myForm.find('firstName')" id="firstName" class="form-control"/>
+                        <input type="text" [formControl]="myForm.find('firstName')" id="firstName" class="form-control"/>
                     </div>
                     <div class="form-group">
                         <label for="lastName">Last Name:</label>
-                        <input type="text" [ngFormControl]="myForm.find('lastName')" id="lastName" class="form-control"/>
+                        <input type="text" [formControl]="myForm.find('lastName')" id="lastName" class="form-control"/>
                     </div>
                     <!--Still need to add image uploading capability-->
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" [ngFormControl]="myForm.find('email')" id="email" class="form-control"/>
+                        <input type="email" [formControl]="myForm.find('email')" id="email" class="form-control"/>
                     </div>
                 </div>
                 <div class="right-form">
                     <div class="form-group">
                         <label for="phone">Phone:</label>
-                        <input type="text" [ngFormControl]="myForm.find('phone')" id="phone" class="form-control"/>
+                        <input type="text" [formControl]="myForm.find('phone')" id="phone" class="form-control"/>
                     </div>
                     <div class="form-group">
                         <label for="country">Country</label>
-                        <select [ngFormControl]="myForm.find('country')" id="country" #t (change)="onCountryChange(t.value)" class="form-control">
+                        <select [formControl]="myForm.find('country')" id="country" #t (change)="onCountryChange(t.value)" class="form-control">
                             <option>USA</option>
                             <option>Italy</option>
                             <option>Brazil</option>
@@ -39,11 +39,11 @@ import {Employee} from "./employee";
                     </div>
                     <div class="form-group">
                         <label for="city">City</label>
-                        <input type="text" [ngFormControl]="myForm.find('city')" id="city" class="form-control"/>
+                        <input type="text" [formControl]="myForm.find('city')" id="city" class="form-control"/>
                     </div>
                     <div class="form-group" *ngIf="country!='' && country=='USA'">
                         <label for="state">State:</label>
-                        <select [ngFormControl]="myForm.find('state')" id="state" class="form-control">
+                        <select [formControl]="myForm.find('state')" id="state" class="form-control">
                             <option>Illinois</option>
                             <option>Michigan</option>
                             <option>North Carolina</option>
@@ -55,7 +55,7 @@ import {Employee} from "./employee";
                 <div class="col-one">
                         <div class="form-group">
                             <label for="title">Title:</label>
-                            <select id="title" [ngFormControl]="myForm.find('title')" class="form-control">
+                            <select id="title" [formControl]="myForm.find('title')" class="form-control">
                                 <option>Analyst A1</option>
                                 <option>Analyst A2</option>
                                 <option>Consultant C1</option>
@@ -75,7 +75,7 @@ import {Employee} from "./employee";
                 <div class="col-two">
                     <div class="form-group">
                         <label for="division">Division</label>
-                        <select id="division" [ngFormControl]="myForm.find('division')" class="form-control">
+                        <select id="division" [formControl]="myForm.find('division')" class="form-control">
                             <option>Hyla Soft USA</option>
                             <option>Hyla Soft Italy</option>
                             <option>Hyla soft Brazil</option>
@@ -94,7 +94,7 @@ import {Employee} from "./employee";
                 <div class="col-three">
                     <div class="form-group">
                         <label for="department">Department</label>
-                        <select id="department" [ngFormControl]="myForm.find('department')" class="form-control">
+                        <select id="department" [formControl]="myForm.find('department')" class="form-control">
                             <option>Software</option>
                             <option>PLM</option>
                             <option>MES</option>
@@ -159,7 +159,7 @@ import {Employee} from "./employee";
     `]
 })
 export class NewEmployeeBasic implements OnInit{
-    myForm:ControlGroup;
+    myForm:FormGroup;
     country:String='';
     canManageEmployees = false;
     canManageProjects = false;
@@ -182,7 +182,7 @@ export class NewEmployeeBasic implements OnInit{
             department: ['']
         });
     }
-    private isEmail(control : Control): {[s:string]:boolean}{
+    private isEmail(control : FormControl): {[s:string]:boolean}{
         if(!control.value.match("[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?")){
             return {invalidMail:true}
         }

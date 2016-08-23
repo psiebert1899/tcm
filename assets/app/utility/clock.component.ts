@@ -10,7 +10,7 @@ import {Component} from "@angular/core";
   `,
   directives: []
 })
-export class App {
+export class ClockComponent {
   private date;
   constructor() {
     this.date = new Date();

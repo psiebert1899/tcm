@@ -1,13 +1,12 @@
 import {Component, OnInit} from "@angular/core";
-import {ControlGroup, FormBuilder, Validators, Control} from "@angular/common";
 import {Router} from "@angular/router";
-import {ROUTER_DIRECTIVES, Routes} from "@angular/router";
 import {User} from "./auth/user";
 import {AuthenticationService} from "./auth/authentication.service";
 import {UserService} from "./user/user.service";
 import {ApplicationUser} from "./user/applicationuser";
 import {ErrorService} from "./errors/error.service";
 import {ClockComponent} from "./utility/clock.component";
+import {FormGroup, FormBuilder, Validators, FormControl} from "@angular/forms";
 @Component({
     selector: 'my-header',
     template: `
@@ -30,8 +29,8 @@ import {ClockComponent} from "./utility/clock.component";
                         <li class="dropdown">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Employees<span class="caret"></span></a>
                           <ul class="dropdown-menu">
-                            <li><a [routerLink]="['/employee/new']">New Employee</a></li>
-                            <li><a [routerLink]="['/employee/list']">Employee List</a></li>
+                            <li><a routerLink="/employee/new">New Employee</a></li>
+                            <li><a routerLink="/employee/list">Employee List</a></li>
                             <li><a href="#">Something else here</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="#">Separated link</a></li>
@@ -42,8 +41,8 @@ import {ClockComponent} from "./utility/clock.component";
                          <li class="dropdown" *ngIf="isLoggedIn()">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Projects<span class="caret"></span></a>
                           <ul class="dropdown-menu">
-                            <li><a [routerLink]="['/project/new']">New Project</a></li>
-                            <li><a [routerLink]="['/project/list']">Project List</a></li>
+                            <li><a routerLink="/project/new">New Project</a></li>
+                            <li><a routerLink="/project/list">Project List</a></li>
                             <li><a href="#">Something else here</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a href="#">Separated link</a></li>
@@ -64,17 +63,18 @@ import {ClockComponent} from "./utility/clock.component";
                           </ul>
                         </li>
                       </ul>
+                      <my-current-time></my-current-time>
                       <ul class="nav navbar-nav navbar-right">
-                        <li *ngIf="isLoggedIn()"><a [routerLink]="['/user/profile']">{{loggedUser!=undefined?loggedUser.firstName+" " + loggedUser.lastName : 'Default User'}}</a></li>
+                        <li *ngIf="isLoggedIn()"><a routerLink="/user/profile">{{loggedUser!=undefined?loggedUser.firstName+" " + loggedUser.lastName : 'Default User'}}</a></li>
                         <li *ngIf="!isLoggedIn()">
-                          <form [ngFormModel]="myForm" (ngSubmit)="onSubmit()">
-                              <input type="email" id="email" placeholder="Email Address"  [ngFormControl]="myForm.find('email')"/>
-                              <input type="password" id="password" placeholder="Password" [ngFormControl]="myForm.find('password')"/>
+                          <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+                              <input type="email" id="email" placeholder="Email Address"  [formControl]="myForm.find('email')"/>
+                              <input type="password" id="password" placeholder="Password" [formControl]="myForm.find('password')"/>
                               <button type="submit" class="btn btn-primary">Sign in</button>
                           </form>
                         </li>
 
-                        <li><a [routerLink]="['auth/logout']" *ngIf="isLoggedIn()">Sign Out</a></li>
+                        <li><a routerLink="auth/logout" *ngIf="isLoggedIn()">Sign Out</a></li>
                       </ul>
                     </div><!-- /.navbar-collapse -->
                   </div><!-- /.container-fluid -->
@@ -96,15 +96,14 @@ import {ClockComponent} from "./utility/clock.component";
                     color: white;
                 }
                 .navbar-brand{
-                    font-family: NEORD;
+                    font-family: NEORD,sans-serif;
                 }
-            `],
-    directives: [ROUTER_DIRECTIVES]
+            `]
 })
 
 export class HeaderComponent implements OnInit{
     public loggedUser : ApplicationUser;
-    public myForm: ControlGroup;
+    public myForm: FormGroup;
     constructor(private _fb:FormBuilder, private _authService:AuthenticationService, private _router :Router, private _userService : UserService, private _errorService:ErrorService){}
 
     isLoggedIn() {
@@ -123,7 +122,7 @@ export class HeaderComponent implements OnInit{
         this._userService.broadcastUser.subscribe(
             data=>this.loggedUser=data,
             error => console.log(error)
-        )
+        );
 
         this.myForm = this._fb.group({
           email: ['', Validators.compose([
@@ -155,7 +154,7 @@ export class HeaderComponent implements OnInit{
         return this._userService.user.firstName + " " + this._userService.user.lastName;
     }
 
-    private isEmail(control : Control): {[s:string]:boolean}{
+    private isEmail(control : FormControl): {[s:string]:boolean}{
         if(!control.value.match("[-a-z0-9~!$%^&*_=+}{\'?]+(\.[-a-z0-9~!$%^&*_=+}{\'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?")){
             return {invalidMail:true}
         }

@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {EmployeeService} from "./employee.service";
 import {Employee} from "./employee";
-import {Router, Route, RouteSegment} from "@angular/router";
+import {Router} from "@angular/router";
 import {Query} from "../utility/query";
 @Component({
     selector : 'my-employee-basic-details',
@@ -119,9 +119,5 @@ export class EmployeeBasicDetailsComponent implements OnInit{
             }
 
         )
-    }
-    routerOnActivate(curr: RouteSegment) {
-        console.log("router activated");
-        this._id=curr.getParam('id');
     }
 }
